@@ -1,0 +1,44 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\AntiForgeryController.cs" />
+    <Compile Remove="Migrations\20201122150917_Initial.cs" />
+    <Compile Remove="Migrations\20201122150917_Initial.Designer.cs" />
+    <Compile Remove="Migrations\20210204211411_AddedAnotherPropertyToFoo.cs" />
+    <Compile Remove="Migrations\20210204211411_AddedAnotherPropertyToFoo.Designer.cs" />
+    <Compile Remove="Migrations\20210206134549_Identity.cs" />
+    <Compile Remove="Migrations\20210206134549_Identity.Designer.cs" />
+    <Compile Remove="Support\DataContextSet.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.ApiAuthorization.IdentityServer" Version="5.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="5.0.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SSM.Administrator.Business\SSM.Administrator.Business.csproj" />
+    <ProjectReference Include="..\SSM.Administrator.Data\SSM.Administrator.Data.csproj" />
+    <ProjectReference Include="..\SSM.Administrator.Entity.Mapping\SSM.Administrator.Entity.Mapping.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="BNPP.Framework.Common">
+      <HintPath>..\Bin_References\BNPP.Framework.Common.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

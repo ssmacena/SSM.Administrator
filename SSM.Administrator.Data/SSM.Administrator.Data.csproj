@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SSM.Administrator.Entity.Mapping\SSM.Administrator.Entity.Mapping.csproj" />
+    <ProjectReference Include="..\SSM.Administrator.Entity\SSM.Administrator.Entity.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,84 @@
+04/02/2021 19:58:22	This log contains information about the import schema operation into project 'SSM.Administrator.MsSql' on computer 'DESKTOP-CJCBC8M' by user 'Silvio'.
+04/02/2021 19:58:23	Import of database schema has started.
+04/02/2021 19:58:27	Gathering database credentials
+04/02/2021 19:58:27	Gathering database options
+04/02/2021 19:58:27	Gathering users
+04/02/2021 19:58:27	Gathering roles
+04/02/2021 19:58:27	Gathering application roles
+04/02/2021 19:58:27	Gathering role memberships
+04/02/2021 19:58:27	Gathering filegroups
+04/02/2021 19:58:27	Gathering full-text catalogs
+04/02/2021 19:58:27	Gathering assemblies
+04/02/2021 19:58:27	Gathering certificates
+04/02/2021 19:58:27	Gathering asymmetric keys
+04/02/2021 19:58:27	Gathering symmetric keys
+04/02/2021 19:58:27	Gathering encrypted symmetric keys
+04/02/2021 19:58:27	Gathering schemas
+04/02/2021 19:58:27	Gathering XML schema collections
+04/02/2021 19:58:27	Gathering user-defined data types
+04/02/2021 19:58:27	Gathering user-defined types
+04/02/2021 19:58:27	Gathering table types
+04/02/2021 19:58:27	Gathering unique keys for table types
+04/02/2021 19:58:27	Gathering primary keys for table types
+04/02/2021 19:58:27	Gathering indexes for table types
+04/02/2021 19:58:27	Gathering check constraints for table types
+04/02/2021 19:58:27	Gathering default constraints for table types
+04/02/2021 19:58:27	Gathering partition functions
+04/02/2021 19:58:27	Gathering partition schemes
+04/02/2021 19:58:27	Gathering functions
+04/02/2021 19:58:27	Gathering encrypted functions
+04/02/2021 19:58:27	Gathering aggregates
+04/02/2021 19:58:27	Gathering procedures
+04/02/2021 19:58:27	Gathering encrypted procedures
+04/02/2021 19:58:27	Gathering tables
+04/02/2021 19:58:27	Gathering primary keys
+04/02/2021 19:58:27	Gathering unique constraints
+04/02/2021 19:58:27	Gathering foreign keys
+04/02/2021 19:58:27	Gathering default constraints
+04/02/2021 19:58:27	Gathering check constraints
+04/02/2021 19:58:27	Gathering views
+04/02/2021 19:58:27	Gathering encrypted views
+04/02/2021 19:58:27	Gathering indexes
+04/02/2021 19:58:27	Gathering statistics
+04/02/2021 19:58:27	Gathering full-text index stoplists
+04/02/2021 19:58:27	Gathering search property lists
+04/02/2021 19:58:27	Gathering search properties
+04/02/2021 19:58:27	Gathering full-text indexes
+04/02/2021 19:58:27	Gathering column store indexes
+04/02/2021 19:58:27	Gathering spatial indexes
+04/02/2021 19:58:27	Gathering XML indexes
+04/02/2021 19:58:27	Gathering Selective XML indexes
+04/02/2021 19:58:27	Gathering encrypted triggers
+04/02/2021 19:58:27	Gathering triggers
+04/02/2021 19:58:27	Gathering encrypted and clr ddl triggers
+04/02/2021 19:58:27	Gathering ddl triggers
+04/02/2021 19:58:27	Gathering synonyms
+04/02/2021 19:58:27	Gathering defaults
+04/02/2021 19:58:27	Gathering data constraint uddt bindings
+04/02/2021 19:58:27	Gathering rules
+04/02/2021 19:58:27	Gathering data constraint uddt bindings
+04/02/2021 19:58:27	Gathering message types
+04/02/2021 19:58:27	Gathering queues
+04/02/2021 19:58:27	Gathering contracts
+04/02/2021 19:58:27	Gathering services
+04/02/2021 19:58:27	Gathering event notifications
+04/02/2021 19:58:27	Gathering remote service bindings
+04/02/2021 19:58:27	Gathering broker priorities
+04/02/2021 19:58:27	Gathering signatures
+04/02/2021 19:58:27	Gathering data compression options
+04/02/2021 19:58:27	Gathering sequence types
+04/02/2021 19:58:27	Gathering security policies
+04/02/2021 19:58:27	Gather column encryption keys
+04/02/2021 19:58:27	Gathering column master keys
+04/02/2021 19:58:27	Gathering external data sources
+04/02/2021 19:58:27	Gathering external file formats
+04/02/2021 19:58:27	Gathering external tables
+04/02/2021 19:58:27	Gathering extended properties
+04/02/2021 19:58:28	Gathering credentials
+04/02/2021 19:58:28	Gathering logins
+04/02/2021 19:58:28	Gathering server audits
+04/02/2021 19:58:28	Scanning project for duplicate elements
+04/02/2021 19:58:28	Finished duplicate element processing
+04/02/2021 19:58:29	Finished importing database.
+04/02/2021 19:58:29	A summary of the import was saved to the following location: D:\SourceGit\Company\SSM_WebApi\SSM.Administrator\SSM.Administrator.MsSql\Import Schema Logs\SSM.Administrator.Ms_20210204105822.log
+04/02/2021 19:58:29	Click Finish to continue...
