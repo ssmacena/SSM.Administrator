@@ -1,0 +1,21 @@
+﻿<div class="maintenance">
+    <div class="content">
+        <div>
+            <i class="fas fa-exclamation-triangle" style="font-size: 150px; color: #15925f;"></i>
+        </div>
+        <h3>
+            Prezado cliente,
+            <br />O Internet Banking do BNP Paribas está passando por uma manutenção técnica.
+            <br />Por favor, tente novamente em alguns instantes.
+            <br />
+            <br />Pedimos desculpas pelo inconveniente.
+            <br /><br />Atenciosamente,
+            <br />Banco BNP Paribas Brasil S/A
+        </h3>
+        <div *ngIf="canNavigate">
+            <a *ngIf="auth?.loggedIn" class="link-green" routerLink="/account/my-account" routerLinkActive="active">Minha Conta</a>
+            <a *ngIf="!auth?.loggedIn" class="link-green" routerLink="/home" routerLinkActive="active"><i class="fas fa-home"></i>&nbsp; Home</a>
+        </div>
+    </div>
+    <div class="clear"> </div>
+</div>

@@ -1,0 +1,11 @@
+<div class="collapse-item">
+    <header [ngClass]="{'hr': true, 'collapsed': collapse }" (click)="onclickHeader()"
+            aria-expanded="true" data-toggle="collapse">
+        <i class="icon icon-arrow-right float-right"></i>{{title}}
+    </header>
+    <div [ngClass]="{'collapse': true, 'show': !collapse }">
+        <div class="collapse-content">
+            <ng-content></ng-content>
+        </div>
+    </div>
+</div>

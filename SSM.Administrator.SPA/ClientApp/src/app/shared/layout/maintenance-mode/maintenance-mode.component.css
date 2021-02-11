@@ -1,0 +1,105 @@
+.maintenance {
+    /*background: #fff;*/
+    width: 90%;
+}
+
+.content {
+    width: 100%;
+    padding-left: 3em;
+}
+    .content div {
+        text-align: center;
+    }
+
+    .content h3 {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.8em;
+        color: #656262;
+        margin: 20px 0px;
+    }
+
+@media(max-width:1366px) {
+    .maintenance {
+        width: 60%;
+    }
+}
+
+@media(max-width:1280px) {
+    .maintenance {
+        width: 62%;
+    }
+}
+
+@media(max-width:1024px) {
+    .content h3 {
+        margin: 10px 0px;
+    }
+}
+
+@media(max-width:768px) {
+    .content {
+        width: 52%;
+        padding-left: 2em;
+    }
+
+    .maintenance {
+        width: 78%;
+        padding: 5em 3em 5em 3em;
+        margin: 12em auto 0em;
+    }
+
+    .content h3 {
+        font-size: 13px;
+    }
+}
+
+@media(max-width:640px) {
+
+    .content {
+        width: 100%;
+        float: none;
+        margin: 0 auto;
+        padding-left: 0em;
+        text-align: center;
+        border-left: none;
+    }
+
+    .maintenance {
+        width: 78%;
+        padding: 3em 3em 3em 3em;
+        margin: 7em auto 0em;
+    }
+}
+
+@media(max-width:480px) {
+    .maintenance {
+        width: 70%;
+        margin: 6em auto 0em;
+    }
+
+    .content img {
+        width: 20%;
+    }
+
+}
+
+@media(max-width:384px) {
+    .maintenance {
+        padding: 2em 3em 2em 3em;
+        /*-- agileits --*/
+    }
+}
+
+@media(max-width:320px) {
+    .maintenance {
+        width: 83%;
+        margin: 3em auto 0em;
+        padding: 1em 1em 1em 1em;
+    }
+
+    .content h3 {
+        margin: 10px 0px;
+        font-size: 12px;
+    }
+}

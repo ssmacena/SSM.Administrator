@@ -1,0 +1,187 @@
+.not-found {
+    margin: 5em auto 0em;
+    background: #fff;
+    border-radius: 5px;
+    width: 70%;
+}
+
+.notfound-top h1 {
+    font-size: 9.5em;
+    color: #15925f;
+    padding-top: 0.2em;
+}
+
+.notfound-top {
+    float: left;
+    width: 35%;
+    text-align: right;
+    padding: 0em 4em 0em 0em;
+}
+
+.content {
+    float: right;
+    width: 50%;
+    padding-left: 3em;
+    border-left: 2px solid #15925f;
+}
+
+    .content h3 {
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.8em;
+        color: #656262;
+        margin: 20px 0px;
+    }
+
+@media(max-width:1366px) {
+    .not-found {
+        width: 60%;
+    }
+}
+
+@media(max-width:1280px) {
+    .not-found {
+        width: 62%;
+    }
+}
+
+@media(max-width:1024px) {
+    .notfound-top {
+        padding: 0em 0em 0em 0em;
+    }
+
+    .content h3 {
+        margin: 10px 0px;
+    }
+
+    .notfound-top h1 {
+        font-size: 8em;
+        padding-top: 0.35em;
+    }
+}
+
+@media(max-width:768px) {
+    .notfound-top h1 {
+        /*-- agileits --*/
+        font-size: 7.5em;
+    }
+
+    .content {
+        width: 52%;
+        padding-left: 2em;
+    }
+
+    .not-found {
+        width: 78%;
+        padding: 5em 3em 5em 3em;
+        margin: 12em auto 0em;
+    }
+
+    .content h3 {
+        font-size: 13px;
+    }
+
+}
+
+@media(max-width:667px) {
+    .notfound-top h1 {
+        font-size: 6.5em;
+        padding-top: 0.5em;
+    }
+}
+
+@media(max-width:640px) {
+    .notfound-top {
+        float: none;
+        width: 34%;
+        margin: 0 auto;
+    }
+
+    .content {
+        width: 100%;
+        float: none;
+        margin: 0 auto;
+        padding-left: 0em;
+        text-align: center;
+        border-left: none;
+    }
+
+    .notfound-top h1 {
+        padding-top: 0em;
+    }
+
+    .not-found {
+        width: 78%;
+        padding: 3em 3em 3em 3em;
+        margin: 7em auto 0em;
+    }
+}
+
+@media(max-width:600px) {
+    .notfound-top {
+        width: 39%;
+    }
+}
+
+@media(max-width:568px) {
+    .notfound-top {
+        width: 42%;
+    }
+}
+
+@media(max-width:480px) {
+    .not-found {
+        width: 70%;
+        margin: 6em auto 0em;
+    }
+
+    .notfound-top h1 {
+        font-size: 5em;
+    }
+
+    .content img {
+        width: 20%;
+    }
+
+    .notfound-top {
+        width: 41%;
+    }
+}
+
+@media(max-width:414px) {
+    .notfound-top {
+        width: 50%;
+    }
+}
+
+@media(max-width:384px) {
+    .notfound-top {
+        width: 53%;
+    }
+
+    .not-found {
+        padding: 2em 3em 2em 3em;
+        /*-- agileits --*/
+    }
+}
+
+@media(max-width:320px) {
+    .not-found {
+        width: 83%;
+        margin: 3em auto 0em;
+        padding: 1em 1em 1em 1em;
+    }
+
+    .notfound-top {
+        width: 44%;
+    }
+
+        .notfound-top h1 {
+            font-size: 4em;
+        }
+
+    .content h3 {
+        margin: 10px 0px;
+        font-size: 12px;
+    }
+}

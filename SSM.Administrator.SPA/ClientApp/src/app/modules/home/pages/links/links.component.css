@@ -1,0 +1,160 @@
+.footer-links {
+    padding-top: 20px;
+}
+
+    .footer-links .footer-bourse {
+        font-family: 'BNPPSquare', Arial, Helvetica, sans-serif;
+        color: #fff
+    }
+
+        .footer-links .footer-bourse > p, .footer-links .footer-bourse > p a {
+            font-size: 18px;
+            font-family: 'BNPPSquare', Arial, Helvetica, sans-serif;
+            font-weight: 700;
+            margin-bottom: 30px;
+            line-height: 22px;
+            color: #fff;
+            margin-top: 20px
+        }
+
+            .footer-links .footer-bourse > p a:focus, .footer-links .footer-bourse > p a:hover {
+                opacity: .8
+            }
+
+        .footer-links .footer-bourse .bourse-info > a {
+            display: inline-block
+        }
+
+            .footer-links .footer-bourse .bourse-info > a > p {
+                color: #fff;
+                margin: 0;
+                font-size: 11px;
+                text-transform: uppercase;
+                padding: 0;
+                border: 0;
+                line-height: 20px
+            }
+
+        .footer-links .footer-bourse .cours {
+            color: #5dc66a;
+            font-size: 48px;
+            font-weight: bold
+        }
+
+        .footer-links .footer-bourse .percent {
+            font-weight: normal;
+            font-size: 18px;
+            position: relative;
+            margin-left: 10px;
+            color: #fff
+        }
+
+        .footer-links .footer-bourse .date {
+            display: block;
+            font-size: 11px;
+            text-transform: uppercase;
+            position: relative;
+            top: -10px;
+            color: #fff
+        }
+
+    .footer-links p.title {
+        color: #5dc66a;
+        font-size: 11px;
+        line-height: 16px;
+        text-transform: uppercase;
+        border-left: 2px solid #5dc66a;
+        margin: 10px 0;
+        padding: 12px 20px;
+        font-family: 'BNPPSquare', Arial, Helvetica, sans-serif;
+        font-weight: normal
+    }
+
+    .footer-links ul {
+        list-style: none;
+        padding-left: 22px
+    }
+
+        .footer-links ul li {
+            margin-bottom: 6px;
+            font-size: 13px
+        }
+
+            .footer-links ul li a, .footer-links .footer-social ul li a span {
+                color: #fff;
+                text-decoration: none;
+                border-bottom: 1px solid transparent;
+                transition: border .3s ease;
+                -webkit-transition: border .3s ease
+            }
+
+    .footer-links .footer-social ul li a, .footer-links .footer-social ul li a:hover {
+        border: 0
+    }
+
+        .footer-links ul li a:hover, .footer-links ul li a:focus, .footer-links .footer-social ul li a:hover span, .footer-links .footer-social ul li a:focus span {
+            border-bottom: 1px solid #fff
+        }
+
+    .footer-links .footer-social li {
+        margin-bottom: 9px
+    }
+
+        .footer-links .footer-social li i {
+            opacity: 1;
+            display: inline-block;
+            position: relative;
+            margin-right: 5px;
+            font-size: 1rem;
+            width: 15px
+        }
+
+.footer-brand {
+    border-top: 4px solid #00965e;
+    padding: 17px 0
+}
+
+    .footer-brand .logo {
+        display: inline-block;
+        float: left
+    }
+
+    .footer-brand .baseline {
+        font-size: 14px;
+        line-height: 23px;
+        margin: 0 0 0 25px;
+        float: left
+    }
+
+    .footer-brand ul {
+        list-style: none;
+        float: right;
+        margin: 8px 0 0
+    }
+
+        .footer-brand ul li {
+            float: left;
+            border-left: 1px solid #595959;
+            padding: 0 5px;
+            font-size: 10px
+        }
+
+            .footer-brand ul li:first-child {
+                border-left: 0
+            }
+
+            .footer-brand ul li:last-child {
+                border-right: 0
+            }
+
+            .footer-brand ul li a {
+                color: #595959;
+                border-bottom: 1px solid transparent;
+                text-decoration: none;
+                transition: border .3s ease;
+                -webkit-transition: border .3s ease
+            }
+
+                .footer-brand ul li a:hover, .footer-brand ul li a:focus {
+                    border-bottom-color: #595959
+                }

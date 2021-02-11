@@ -1,0 +1,386 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.WebApi\\SSM.Administrator.WebApi.csproj": {}
+  },
+  "projects": {
+    "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.Business\\SSM.Administrator.Business.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.Business\\SSM.Administrator.Business.csproj",
+        "projectName": "SSM.Administrator.Business",
+        "projectPath": "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.Business\\SSM.Administrator.Business.csproj",
+        "packagesPath": "C:\\Users\\Silvio\\.nuget\\packages\\",
+        "outputPath": "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.Business\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Silvio\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.Data\\SSM.Administrator.Data.csproj": {
+                "projectPath": "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.Data\\SSM.Administrator.Data.csproj"
+              },
+              "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.Entity\\SSM.Administrator.Entity.csproj": {
+                "projectPath": "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.Entity\\SSM.Administrator.Entity.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.Data\\SSM.Administrator.Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.Data\\SSM.Administrator.Data.csproj",
+        "projectName": "SSM.Administrator.Data",
+        "projectPath": "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.Data\\SSM.Administrator.Data.csproj",
+        "packagesPath": "C:\\Users\\Silvio\\.nuget\\packages\\",
+        "outputPath": "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Silvio\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.Entity.Mapping\\SSM.Administrator.Entity.Mapping.csproj": {
+                "projectPath": "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.Entity.Mapping\\SSM.Administrator.Entity.Mapping.csproj"
+              },
+              "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.Entity\\SSM.Administrator.Entity.csproj": {
+                "projectPath": "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.Entity\\SSM.Administrator.Entity.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.Entity.Mapping\\SSM.Administrator.Entity.Mapping.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.Entity.Mapping\\SSM.Administrator.Entity.Mapping.csproj",
+        "projectName": "SSM.Administrator.Entity.Mapping",
+        "projectPath": "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.Entity.Mapping\\SSM.Administrator.Entity.Mapping.csproj",
+        "packagesPath": "C:\\Users\\Silvio\\.nuget\\packages\\",
+        "outputPath": "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.Entity.Mapping\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Silvio\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.Entity\\SSM.Administrator.Entity.csproj": {
+                "projectPath": "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.Entity\\SSM.Administrator.Entity.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.Entity\\SSM.Administrator.Entity.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.Entity\\SSM.Administrator.Entity.csproj",
+        "projectName": "SSM.Administrator.Entity",
+        "projectPath": "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.Entity\\SSM.Administrator.Entity.csproj",
+        "packagesPath": "C:\\Users\\Silvio\\.nuget\\packages\\",
+        "outputPath": "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.Entity\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Silvio\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.WebApi\\SSM.Administrator.WebApi.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.WebApi\\SSM.Administrator.WebApi.csproj",
+        "projectName": "SSM.Administrator.WebApi",
+        "projectPath": "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.WebApi\\SSM.Administrator.WebApi.csproj",
+        "packagesPath": "C:\\Users\\Silvio\\.nuget\\packages\\",
+        "outputPath": "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.WebApi\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Silvio\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.Business\\SSM.Administrator.Business.csproj": {
+                "projectPath": "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.Business\\SSM.Administrator.Business.csproj"
+              },
+              "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.Data\\SSM.Administrator.Data.csproj": {
+                "projectPath": "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.Data\\SSM.Administrator.Data.csproj"
+              },
+              "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.Entity.Mapping\\SSM.Administrator.Entity.Mapping.csproj": {
+                "projectPath": "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.Entity.Mapping\\SSM.Administrator.Entity.Mapping.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.ApiAuthorization.IdentityServer": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.AspNetCore.Identity": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Extensions.Logging.Debug": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[5.6.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+﻿
+<div data-html2canvas-ignore="true" class="btn-group" dropdown placement="bottom right">
+    <button id="button-alignment" dropdownToggle type="button"
+            class="btn btn-primary dropdown-toggle" aria-controls="dropdown-alignment"
+            tooltip="Clique para alternar a visão por produto."
+            placement="top"
+            container="body">
+        <i class="fas fa-compress-arrows-alt"></i>
+        <span>&nbsp;{{currentSelectedItem.text}}</span> <span class="caret"></span>
+    </button>
+    <ul id="dropdown-alignment" *dropdownMenu class="dropdown-menu dropdown-menu-right"
+        role="menu" aria-labelledby="button-alignment">
+        <ng-template ngFor let-item [ngForOf]="items" let-i="index">
+            <li role="menuitem">
+                <a class="dropdown-item" href="javascript:void(0);" (click)="onSelectedItem(item)">
+                    {{item.text}}
+                </a>
+            </li>
+        </ng-template>
+        <li class="divider dropdown-divider"></li>
+        <li role="menuitem"><a class="dropdown-item" href="javascript:void(0);" (click)="onSelectedItem()">Todos</a></li>
+    </ul>
+</div>

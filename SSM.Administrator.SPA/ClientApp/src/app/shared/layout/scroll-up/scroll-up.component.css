@@ -1,0 +1,8 @@
+.show-scrollTop {
+    display: block;
+    transition: all .2s ease-in-out;
+    z-index: 1039;
+    bottom: 40px;
+}
+
+
