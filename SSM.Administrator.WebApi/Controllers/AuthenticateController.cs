@@ -23,15 +23,15 @@ namespace SSM.Administrator.WebApi.Controllers
     [ApiController]
     public class AuthenticateController : ControllerBase
     {
-        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IConfiguration _configuration;
 
-        public AuthenticateController(RoleManager<IdentityRole> roleManager,
+        public AuthenticateController(SignInManager<ApplicationUser> signInManager,
                                       UserManager<ApplicationUser> userManager,
                                       IConfiguration configuration)
         {
-            _roleManager = roleManager;
+            _signInManager = signInManager;
             _userManager = userManager;
             _configuration = configuration;
         }

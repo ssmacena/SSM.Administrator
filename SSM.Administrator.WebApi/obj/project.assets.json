@@ -6966,6 +6966,7 @@
       "Microsoft.Extensions.Logging.Debug >= 5.0.0",
       "SSM.Administrator.Business >= 1.0.0",
       "SSM.Administrator.Data >= 1.0.0",
+      "SSM.Administrator.Entity >= 1.0.0",
       "SSM.Administrator.Entity.Mapping >= 1.0.0",
       "Swashbuckle.AspNetCore >= 5.6.3"
     ]
@@ -7009,6 +7010,9 @@
             },
             "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.Entity.Mapping\\SSM.Administrator.Entity.Mapping.csproj": {
               "projectPath": "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.Entity.Mapping\\SSM.Administrator.Entity.Mapping.csproj"
+            },
+            "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.Entity\\SSM.Administrator.Entity.csproj": {
+              "projectPath": "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.Entity\\SSM.Administrator.Entity.csproj"
             }
           }
         }

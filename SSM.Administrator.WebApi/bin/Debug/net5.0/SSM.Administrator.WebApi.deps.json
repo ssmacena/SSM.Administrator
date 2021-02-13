@@ -34,6 +34,7 @@
           "Microsoft.Extensions.Logging.Debug": "5.0.0",
           "SSM.Administrator.Business": "1.0.0",
           "SSM.Administrator.Data": "1.0.0",
+          "SSM.Administrator.Entity": "1.0.0",
           "SSM.Administrator.Entity.Mapping": "1.0.0",
           "Swashbuckle.AspNetCore": "5.6.3",
           "BNPP.Framework.Common": "1.6.3.0",

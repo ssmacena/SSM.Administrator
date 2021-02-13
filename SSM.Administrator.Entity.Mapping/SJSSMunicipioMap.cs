@@ -39,10 +39,10 @@ namespace SSM.Administrator.Entity.Mapping
                 .HasMaxLength(2);
 
             // relationships
-            builder.HasOne(t => t.SJSSEstado)
-                .WithMany(t => t.SJSSMunicipios)
-                .HasForeignKey(d => d.Uf)
-                .HasConstraintName("FK_SJSS_Municipio_SJSS_Estado");
+            //builder.HasOne(t => t.SJSSEstado)
+            //    .WithMany(t => t.SJSSMunicipios)
+            //    .HasForeignKey(d => d.Uf)
+            //    .HasConstraintName("FK_SJSS_Municipio_SJSS_Estado");
 
             #endregion
         }

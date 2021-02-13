@@ -8,6 +8,7 @@
     <Compile Remove="Authentication\ApplicationRole.cs" />
     <Compile Remove="Authentication\ApplicationUserManager.cs" />
     <Compile Remove="Controllers\AntiForgeryController.cs" />
+    <Compile Remove="Controllers\InitController.cs" />
     <Compile Remove="Migrations\20201122150917_Initial.cs" />
     <Compile Remove="Migrations\20201122150917_Initial.Designer.cs" />
     <Compile Remove="Migrations\20210204211411_AddedAnotherPropertyToFoo.cs" />
@@ -35,6 +36,7 @@
     <ProjectReference Include="..\SSM.Administrator.Business\SSM.Administrator.Business.csproj" />
     <ProjectReference Include="..\SSM.Administrator.Data\SSM.Administrator.Data.csproj" />
     <ProjectReference Include="..\SSM.Administrator.Entity.Mapping\SSM.Administrator.Entity.Mapping.csproj" />
+    <ProjectReference Include="..\SSM.Administrator.Entity\SSM.Administrator.Entity.csproj" />
   </ItemGroup>
 
   <ItemGroup>
