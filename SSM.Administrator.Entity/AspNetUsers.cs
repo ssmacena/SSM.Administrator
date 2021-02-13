@@ -23,5 +23,9 @@ namespace SSM.Administrator.Entity
         public DateTime? LockoutEnd { get; set; }
         public Boolean LockoutEnabled { get; set; }
         public int AccessFailedCount { get; set; }
+
+        #region Generated Relationships
+        public virtual ICollection<AspNetUserRoles> UserAspNetUserRoles { get; set; }
+        #endregion
     }
 }

@@ -16,6 +16,9 @@ namespace SSM.Administrator.WebApi
             CreateHostBuilder(args).Build().Run();
         }
 
+        //https://github.com/loresoft/EntityFrameworkCore.Generator
+        //dotnet tool install --global EntityFrameworkCore.Generator
+        //efg generate -c 'Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=SSM_DB;Integrated Security=True' -p 'SqlServer'
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>

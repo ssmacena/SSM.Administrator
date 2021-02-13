@@ -1,3 +1,10 @@
+D:\SourceGit\SSM.Administrator\SSM.Administrator.WebApi\obj\Debug\net5.0\SSM.Administrator.WebApi.csprojAssemblyReference.cache
+D:\SourceGit\SSM.Administrator\SSM.Administrator.WebApi\obj\Debug\net5.0\SSM.Administrator.WebApi.GeneratedMSBuildEditorConfig.editorconfig
+D:\SourceGit\SSM.Administrator\SSM.Administrator.WebApi\obj\Debug\net5.0\SSM.Administrator.WebApi.AssemblyInfoInputs.cache
+D:\SourceGit\SSM.Administrator\SSM.Administrator.WebApi\obj\Debug\net5.0\SSM.Administrator.WebApi.AssemblyInfo.cs
+D:\SourceGit\SSM.Administrator\SSM.Administrator.WebApi\obj\Debug\net5.0\SSM.Administrator.WebApi.csproj.CoreCompileInputs.cache
+D:\SourceGit\SSM.Administrator\SSM.Administrator.WebApi\obj\Debug\net5.0\SSM.Administrator.WebApi.MvcApplicationPartsAssemblyInfo.cache
+D:\SourceGit\SSM.Administrator\SSM.Administrator.WebApi\obj\Debug\net5.0\SSM.Administrator.WebApi.MvcApplicationPartsAssemblyInfo.cs
 D:\SourceGit\SSM.Administrator\SSM.Administrator.WebApi\bin\Debug\net5.0\appsettings.Development.json
 D:\SourceGit\SSM.Administrator\SSM.Administrator.WebApi\bin\Debug\net5.0\appsettings.json
 D:\SourceGit\SSM.Administrator\SSM.Administrator.WebApi\bin\Debug\net5.0\SSM.Administrator.WebApi.StaticWebAssets.xml
@@ -64,13 +71,6 @@ D:\SourceGit\SSM.Administrator\SSM.Administrator.WebApi\bin\Debug\net5.0\SSM.Adm
 D:\SourceGit\SSM.Administrator\SSM.Administrator.WebApi\bin\Debug\net5.0\SSM.Administrator.Data.pdb
 D:\SourceGit\SSM.Administrator\SSM.Administrator.WebApi\bin\Debug\net5.0\SSM.Administrator.Entity.Mapping.pdb
 D:\SourceGit\SSM.Administrator\SSM.Administrator.WebApi\bin\Debug\net5.0\SSM.Administrator.Entity.pdb
-D:\SourceGit\SSM.Administrator\SSM.Administrator.WebApi\obj\Debug\net5.0\SSM.Administrator.WebApi.csprojAssemblyReference.cache
-D:\SourceGit\SSM.Administrator\SSM.Administrator.WebApi\obj\Debug\net5.0\SSM.Administrator.WebApi.GeneratedMSBuildEditorConfig.editorconfig
-D:\SourceGit\SSM.Administrator\SSM.Administrator.WebApi\obj\Debug\net5.0\SSM.Administrator.WebApi.AssemblyInfoInputs.cache
-D:\SourceGit\SSM.Administrator\SSM.Administrator.WebApi\obj\Debug\net5.0\SSM.Administrator.WebApi.AssemblyInfo.cs
-D:\SourceGit\SSM.Administrator\SSM.Administrator.WebApi\obj\Debug\net5.0\SSM.Administrator.WebApi.csproj.CoreCompileInputs.cache
-D:\SourceGit\SSM.Administrator\SSM.Administrator.WebApi\obj\Debug\net5.0\SSM.Administrator.WebApi.MvcApplicationPartsAssemblyInfo.cs
-D:\SourceGit\SSM.Administrator\SSM.Administrator.WebApi\obj\Debug\net5.0\SSM.Administrator.WebApi.MvcApplicationPartsAssemblyInfo.cache
 D:\SourceGit\SSM.Administrator\SSM.Administrator.WebApi\obj\Debug\net5.0\staticwebassets\SSM.Administrator.WebApi.StaticWebAssets.Manifest.cache
 D:\SourceGit\SSM.Administrator\SSM.Administrator.WebApi\obj\Debug\net5.0\staticwebassets\SSM.Administrator.WebApi.StaticWebAssets.xml
 D:\SourceGit\SSM.Administrator\SSM.Administrator.WebApi\obj\Debug\net5.0\scopedcss\bundle\SSM.Administrator.WebApi.styles.css

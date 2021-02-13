@@ -13,7 +13,6 @@ namespace SSM.Administrator.WebApi.Support
     {
         private readonly DataContextSet _dbContext;
         protected DataContextSet DbContext => (DataContextSet)HttpContext.RequestServices.GetService(typeof(DataContextSet));
-        protected List<Permission> CurrentUserPermissions { get; private set; }
         protected String CurrentUserId { get; set; }
 
 
@@ -39,7 +38,6 @@ namespace SSM.Administrator.WebApi.Support
             //T business = new T ();
             T business = (T)Activator.CreateInstance(typeof(T), DbContext);
             business.SetCurrentUser(this.CurrentUserId);
-            business.SetCurrentUserInformation(this.CurrentUserPermissions);
             return business;
         }
 

@@ -12,7 +12,6 @@ namespace SSM.Administrator.Business.Global
 {
     public class BaseBusiness
     {
-        protected List<Permission> CurrentUserPermissions { get; private set; }
         protected String CurrentUserId { get; set; }
         public Boolean ProxyCreationEnabled { get; set; }
         protected DataContextSet _dbContext;
@@ -24,14 +23,6 @@ namespace SSM.Administrator.Business.Global
         public void SetCurrentUser(String currentUserId)
         {
             this.CurrentUserId = currentUserId;
-        }
-
-        public void SetCurrentUserInformation(ICollection<Permission> permissions)
-        {
-            this.CurrentUserPermissions = new List<Permission>();
-
-            if (permissions != null)
-                this.CurrentUserPermissions.AddRange(permissions);
         }
     }
 }

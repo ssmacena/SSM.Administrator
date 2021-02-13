@@ -5,6 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Authentication\ApplicationRole.cs" />
+    <Compile Remove="Authentication\ApplicationUserManager.cs" />
     <Compile Remove="Controllers\AntiForgeryController.cs" />
     <Compile Remove="Migrations\20201122150917_Initial.cs" />
     <Compile Remove="Migrations\20201122150917_Initial.Designer.cs" />

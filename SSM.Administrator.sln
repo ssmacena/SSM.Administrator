@@ -23,6 +23,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "05 Data Layer", "05 Data La
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "SSM.Administrator.MsSql", "SSM.Administrator.MsSql\SSM.Administrator.MsSql.sqlproj", "{EDAD82A0-7671-4FC9-A43A-1564196043C5}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 Presentation Layer", "01 Presentation Layer", "{188AB452-9A70-4868-8AD5-6596C2AFE13E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SSM.Administrator.SPA", "SSM.Administrator.SPA\SSM.Administrator.SPA.csproj", "{6A81E985-C988-4624-889B-6D34AF56D93D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +59,10 @@ Global
 		{EDAD82A0-7671-4FC9-A43A-1564196043C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EDAD82A0-7671-4FC9-A43A-1564196043C5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EDAD82A0-7671-4FC9-A43A-1564196043C5}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{6A81E985-C988-4624-889B-6D34AF56D93D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A81E985-C988-4624-889B-6D34AF56D93D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A81E985-C988-4624-889B-6D34AF56D93D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A81E985-C988-4624-889B-6D34AF56D93D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +74,7 @@ Global
 		{CCF1D78C-A0F8-447F-9CE4-B879904D62B9} = {D173163A-EA81-4331-BFDA-55D780759F8D}
 		{9791BA15-FD92-48F0-B9E1-8C39601DEDDA} = {55A561CE-E2F3-4AEE-9CC4-55F35CADBFE3}
 		{EDAD82A0-7671-4FC9-A43A-1564196043C5} = {D173163A-EA81-4331-BFDA-55D780759F8D}
+		{6A81E985-C988-4624-889B-6D34AF56D93D} = {188AB452-9A70-4868-8AD5-6596C2AFE13E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FAAE27DF-4F30-4E66-955C-036544772B2D}

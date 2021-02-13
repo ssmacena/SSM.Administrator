@@ -1093,14 +1093,6 @@
         "runtime": {
           "SSM.Administrator.Entity.Mapping.dll": {}
         }
-      },
-      "BNPP.Framework.Common/1.6.3.0": {
-        "runtime": {
-          "BNPP.Framework.Common.dll": {
-            "assemblyVersion": "1.6.3.0",
-            "fileVersion": "1.6.3.0"
-          }
-        }
       }
     }
   },
@@ -1787,11 +1779,6 @@
     },
     "SSM.Administrator.Entity.Mapping/1.0.0": {
       "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "BNPP.Framework.Common/1.6.3.0": {
-      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }
