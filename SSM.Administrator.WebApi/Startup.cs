@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -11,6 +12,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using SSM.Administrator.Data;
 using SSM.Administrator.WebApi.Authentication;
+using SSM.Administrator.WebApi.Core.Services;
 using System;
 using System.Text;
 using System.Threading.Tasks;
@@ -34,6 +36,10 @@ namespace SSM.Administrator.WebApi
 
             services.AddDbContext<DataContextSet>(options => options.UseSqlServer(Configuration.GetConnectionString("ConnStr")));
 
+            services.AddScoped<ApplicationDbContext, ApplicationDbContext>();
+
+            services.AddScoped<ICustomerService, CustomerService>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             //DataContextSet
             //services.AddDbContextFactory<ApplicationDbContext>(
             //    options =>

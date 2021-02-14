@@ -16,13 +16,13 @@ namespace SSM.Administrator.Business
             _dbContext = dbContext;
         }
 
-        public SJSS_Customer GetByIdCustomer(int idCustomer)
+        public Clientes GetByIdCustomer(int idCustomer)
         {
-            SJSS_Customer customer = _dbContext.SJSS_Customer.Find(idCustomer);
+            Clientes customer = _dbContext.SJSS_Customer.Find(idCustomer);
             return customer;
         }
 
-        public bool SaveCustomer(SJSS_Customer customer)
+        public bool SaveCustomer(Clientes customer)
         {
             bool result = false;
 
@@ -30,15 +30,15 @@ namespace SSM.Administrator.Business
             {
                 if (customer.Id != 0)
                 {
-                    customer.DT_Alteracao = DateTime.Now;
+                    customer.DataAlteracao = DateTime.Now;
                     _dbContext.Entry(customer).State = EntityState.Modified;
                     _dbContext.SJSS_Customer.Attach(customer);
                     _dbContext.SaveChanges();
                 }
                 else
                 {
-                    customer.DT_Criacao = DateTime.Now;
-                    _dbContext.SJSS_Customer.Attach(customer);
+                    customer.DataCriacao = DateTime.Now;
+                    _dbContext.SJSS_Customer.Add(customer);
                     _dbContext.SaveChanges();
                 }
                 result = true;
@@ -51,9 +51,9 @@ namespace SSM.Administrator.Business
             return result;
         }
 
-        public List<SJSS_Customer> GetByFilterCustomer(string nmCliente)
+        public List<Clientes> GetByFilterCustomer(string nmCliente)
         {
-            List<SJSS_Customer> customer = _dbContext.SJSS_Customer.Where(x => EF.Functions.Like(x.NM_Cliente, "$%{nmCliente}%")).ToList();
+            List<Clientes> customer = _dbContext.SJSS_Customer.Where(x => EF.Functions.Like(x.Nome, "$%{nmCliente}%")).ToList();
             return customer;
         }
 
@@ -63,7 +63,7 @@ namespace SSM.Administrator.Business
 
             try
             {
-                SJSS_Customer customer = _dbContext.SJSS_Customer.Find(idCustomer);
+                Clientes customer = _dbContext.SJSS_Customer.Find(idCustomer);
                 _dbContext.SJSS_Customer.Remove(customer);
                 _dbContext.SaveChanges();
                 result = true;

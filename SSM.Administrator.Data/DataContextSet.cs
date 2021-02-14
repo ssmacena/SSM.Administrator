@@ -14,7 +14,7 @@ namespace SSM.Administrator.Data
 	{
 		public DbSet<AspNetUsers> AspNetUsers { get; set; }
 		public DbSet<Session> Session { get; set; }
-		public DbSet<SJSS_Customer> SJSS_Customer { get; set; }
+		public DbSet<Clientes> SJSS_Customer { get; set; }
 		public DbSet<SJSS_Estado> SJSS_Estado { get; set; }
 		public DbSet<SJSS_Municipio> SJSS_Municipio { get; set; }
 		//...

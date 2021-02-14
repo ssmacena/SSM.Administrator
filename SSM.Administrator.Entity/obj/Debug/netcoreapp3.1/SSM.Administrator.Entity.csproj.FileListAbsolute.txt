@@ -8,4 +8,3 @@ D:\SourceGit\SSM.Administrator\SSM.Administrator.Entity\obj\Debug\netcoreapp3.1\
 D:\SourceGit\SSM.Administrator\SSM.Administrator.Entity\obj\Debug\netcoreapp3.1\SSM.Administrator.Entity.csproj.CopyComplete
 D:\SourceGit\SSM.Administrator\SSM.Administrator.Entity\obj\Debug\netcoreapp3.1\SSM.Administrator.Entity.dll
 D:\SourceGit\SSM.Administrator\SSM.Administrator.Entity\obj\Debug\netcoreapp3.1\SSM.Administrator.Entity.pdb
-D:\SourceGit\SSM.Administrator\SSM.Administrator.Entity\obj\Debug\netcoreapp3.1\SSM.Administrator.Entity.csprojAssemblyReference.cache

@@ -1,7 +1,3 @@
-D:\SourceGit\SSM.Administrator\SSM.Administrator.Business\obj\Debug\netcoreapp3.1\SSM.Administrator.Business.csprojAssemblyReference.cache
-D:\SourceGit\SSM.Administrator\SSM.Administrator.Business\obj\Debug\netcoreapp3.1\SSM.Administrator.Business.AssemblyInfoInputs.cache
-D:\SourceGit\SSM.Administrator\SSM.Administrator.Business\obj\Debug\netcoreapp3.1\SSM.Administrator.Business.AssemblyInfo.cs
-D:\SourceGit\SSM.Administrator\SSM.Administrator.Business\obj\Debug\netcoreapp3.1\SSM.Administrator.Business.csproj.CoreCompileInputs.cache
 D:\SourceGit\SSM.Administrator\SSM.Administrator.Business\bin\Debug\netcoreapp3.1\SSM.Administrator.Business.deps.json
 D:\SourceGit\SSM.Administrator\SSM.Administrator.Business\bin\Debug\netcoreapp3.1\SSM.Administrator.Business.dll
 D:\SourceGit\SSM.Administrator\SSM.Administrator.Business\bin\Debug\netcoreapp3.1\SSM.Administrator.Business.pdb
@@ -11,6 +7,10 @@ D:\SourceGit\SSM.Administrator\SSM.Administrator.Business\bin\Debug\netcoreapp3.
 D:\SourceGit\SSM.Administrator\SSM.Administrator.Business\bin\Debug\netcoreapp3.1\SSM.Administrator.Data.pdb
 D:\SourceGit\SSM.Administrator\SSM.Administrator.Business\bin\Debug\netcoreapp3.1\SSM.Administrator.Entity.pdb
 D:\SourceGit\SSM.Administrator\SSM.Administrator.Business\bin\Debug\netcoreapp3.1\SSM.Administrator.Entity.Mapping.pdb
+D:\SourceGit\SSM.Administrator\SSM.Administrator.Business\obj\Debug\netcoreapp3.1\SSM.Administrator.Business.csprojAssemblyReference.cache
+D:\SourceGit\SSM.Administrator\SSM.Administrator.Business\obj\Debug\netcoreapp3.1\SSM.Administrator.Business.AssemblyInfoInputs.cache
+D:\SourceGit\SSM.Administrator\SSM.Administrator.Business\obj\Debug\netcoreapp3.1\SSM.Administrator.Business.AssemblyInfo.cs
+D:\SourceGit\SSM.Administrator\SSM.Administrator.Business\obj\Debug\netcoreapp3.1\SSM.Administrator.Business.csproj.CoreCompileInputs.cache
 D:\SourceGit\SSM.Administrator\SSM.Administrator.Business\obj\Debug\netcoreapp3.1\SSM.Administrator.Business.csproj.CopyComplete
 D:\SourceGit\SSM.Administrator\SSM.Administrator.Business\obj\Debug\netcoreapp3.1\SSM.Administrator.Business.dll
 D:\SourceGit\SSM.Administrator\SSM.Administrator.Business\obj\Debug\netcoreapp3.1\SSM.Administrator.Business.pdb

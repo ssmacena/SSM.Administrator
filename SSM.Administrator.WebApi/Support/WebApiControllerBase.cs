@@ -5,16 +5,18 @@ using SSM.Administrator.Data;
 using SSM.Administrator.Entity;
 using System;
 using System.Collections.Generic;
+using System.Security.Claims;
 
 namespace SSM.Administrator.WebApi.Support
 {
     //[ValidateModelFilter]
     public abstract class WebApiControllerBase : ControllerBase
     {
-        private readonly DataContextSet _dbContext;
+        //private readonly DataContextSet _dbContext;
         protected DataContextSet DbContext => (DataContextSet)HttpContext.RequestServices.GetService(typeof(DataContextSet));
+        //protected DataContextSet DbContext;
+        protected HttpContext Current;
         protected String CurrentUserId { get; set; }
-
 
         public WebApiControllerBase()
             : base()
@@ -22,20 +24,24 @@ namespace SSM.Administrator.WebApi.Support
             LoadPermissions();
         }
 
-        public WebApiControllerBase(DataContextSet dbContext)
-        {
-            _dbContext = dbContext;
-        }
+        //public WebApiControllerBase(DataContextSet dbContext)
+        //{
+        //    _dbContext = dbContext;
+        //}
 
         protected void LoadPermissions()
         {
             this.CurrentUserId = null;
+
+            //if (this.RequestContext != null)
+            //{
+            //    ClaimsPrincipal principal = this.RequestContext.Principal as ClaimsPrincipal;
+            //}
         }
 
         protected T CreateBusiness<T>()
-            where T : BaseBusiness, new()
+        where T : BaseBusiness, new()
         {
-            //T business = new T ();
             T business = (T)Activator.CreateInstance(typeof(T), DbContext);
             business.SetCurrentUser(this.CurrentUserId);
             return business;

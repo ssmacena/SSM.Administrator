@@ -36,6 +36,13 @@ namespace SSM.Administrator.WebApi.Controllers
             _configuration = configuration;
         }
 
+        //private readonly IDbContextFactory<ApplicationDbContext> _contextFactory;
+
+        //public AuthenticateController(IDbContextFactory<ApplicationDbContext> contextFactory)
+        //{
+        //    _contextFactory = contextFactory;           
+        //}
+
         [HttpPost]
         [Route("login")]
         public async Task<IActionResult> Login([FromBody] LoginModel model)

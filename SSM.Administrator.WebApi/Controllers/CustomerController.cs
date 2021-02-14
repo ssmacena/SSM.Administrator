@@ -1,8 +1,13 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using SSM.Administrator.Business;
 using SSM.Administrator.Entity;
 using SSM.Administrator.WebApi.Authentication;
 using SSM.Administrator.WebApi.Core.Services;
+using SSM.Administrator.WebApi.Support;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,22 +15,35 @@ using System.Threading.Tasks;
 
 namespace SSM.Administrator.WebApi.Controllers
 {
-    [Route("api/customer")]
-    [Produces("application/json")]
+    [Authorize]
     [ApiController]
-    public class CustomerController : ControllerBase
+    [Route("[controller]")]
+    public class CustomerController : WebApiControllerBase
     {
-        private readonly CustomerService service;
+        private ICustomerService service;
 
-        public CustomerController()
+        //https://stackoverflow.com/questions/41058142/injecting-dbcontext-into-service-layer
+
+        public CustomerController(ICustomerService serv,
+                                  IHttpContextAccessor httpContextAccessor)
         {
-            this.service = CustomerService.GetInstance();
+            //_contextFactory = contextFactory;
+            this.service = serv;
+            this.service.SetCurrentHttpContext(httpContextAccessor.HttpContext.User);
         }
+
+        //private readonly ILogger<CustomerController> _logger;
+
+        //public CustomerController(ILogger<CustomerController> logger)
+        //{
+        //    _logger = logger;
+        //    this.service = new CustomerService();
+        //}
 
         #region missing404docs
         // GET api/customer/{guid}
         [HttpGet("{id}", Name = "GetById")]
-        [ProducesResponseType(typeof(SJSS_Customer), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(Clientes), StatusCodes.Status200OK)]
         public IActionResult Get([FromBody] int customerId)
         {
             IActionResult response = BadRequest();
@@ -49,7 +67,7 @@ namespace SSM.Administrator.WebApi.Controllers
         //POST: customer/save-entity
         [Route("save-entity")]
         [HttpPost]
-        public IActionResult Save([FromBody] SJSS_Customer model)
+        public IActionResult Save([FromBody] Clientes model)
         {
             IActionResult response = BadRequest();
 
@@ -69,7 +87,7 @@ namespace SSM.Administrator.WebApi.Controllers
 
         //POST: customer/save-entity
         [Route("getByFilter")]
-        [HttpPost]
+        [HttpGet]
         public IActionResult GetByFilter([FromBody] string nmCliente)
         {
             IActionResult response = BadRequest();

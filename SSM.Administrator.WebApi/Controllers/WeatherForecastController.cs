@@ -26,7 +26,7 @@ namespace SSM.Administrator.WebApi.Controllers
             _logger = logger;
         }
 
-        [HttpGet]
+        [HttpPost]
         public IEnumerable<WeatherForecast> Get()
         {
             var businessController = CreateBusiness<AuthenticationManager>();
