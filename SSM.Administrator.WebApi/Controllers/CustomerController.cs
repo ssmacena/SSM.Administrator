@@ -20,16 +20,13 @@ namespace SSM.Administrator.WebApi.Controllers
     [Route("[controller]")]
     public class CustomerController : WebApiControllerBase
     {
-        private ICustomerService service;
+        private CustomerService service;
 
         //https://stackoverflow.com/questions/41058142/injecting-dbcontext-into-service-layer
 
-        public CustomerController(ICustomerService serv,
-                                  IHttpContextAccessor httpContextAccessor)
+        public CustomerController(IHttpContextAccessor httpContextAccessor)
         {
-            //_contextFactory = contextFactory;
-            this.service = serv;
-            this.service.SetCurrentHttpContext(httpContextAccessor.HttpContext.User);
+            this.service = new CustomerService(httpContextAccessor.HttpContext);
         }
 
         //private readonly ILogger<CustomerController> _logger;

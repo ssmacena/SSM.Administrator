@@ -38,9 +38,8 @@ namespace SSM.Administrator.WebApi
 
             services.AddScoped<ApplicationDbContext, ApplicationDbContext>();
 
-            services.AddScoped<ICustomerService, CustomerService>();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            //DataContextSet
+
             //services.AddDbContextFactory<ApplicationDbContext>(
             //    options =>
             //        options.UseSqlServer(Configuration.GetConnectionString("ConnStr")));

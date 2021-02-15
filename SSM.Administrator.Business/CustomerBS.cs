@@ -26,11 +26,15 @@ namespace SSM.Administrator.Business
         {
             bool result = false;
 
+            if (base.CurrentUserPermissions.Contains("Admin"))
+                result = false;
+
             try
             {
                 if (customer.Id != 0)
                 {
                     customer.DataAlteracao = DateTime.Now;
+                    customer.IdUserCriacao = CurrentUserId;
                     _dbContext.Entry(customer).State = EntityState.Modified;
                     _dbContext.SJSS_Customer.Attach(customer);
                     _dbContext.SaveChanges();
@@ -38,6 +42,7 @@ namespace SSM.Administrator.Business
                 else
                 {
                     customer.DataCriacao = DateTime.Now;
+                    customer.IdUserCriacao = CurrentUserId;
                     _dbContext.SJSS_Customer.Add(customer);
                     _dbContext.SaveChanges();
                 }

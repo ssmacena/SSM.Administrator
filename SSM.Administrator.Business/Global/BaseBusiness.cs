@@ -13,16 +13,20 @@ namespace SSM.Administrator.Business.Global
     public class BaseBusiness
     {
         protected String CurrentUserId { get; set; }
-        public Boolean ProxyCreationEnabled { get; set; }
+        protected List<String> CurrentUserPermissions { get; private set; }
         protected DataContextSet _dbContext;
-        //public BaseBusiness(DataContextSet dbContext)
-        //{
-        //    _dbContext = dbContext;
-        //}
 
         public void SetCurrentUser(String currentUserId)
         {
             this.CurrentUserId = currentUserId;
+        }
+
+        public void SetCurrentUserInformation(ICollection<String> permissions)
+        {
+            this.CurrentUserPermissions = new List<String>();
+
+            if (permissions != null)
+                this.CurrentUserPermissions.AddRange(permissions);
         }
     }
 }
