@@ -5,9 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
-using System.Threading.Tasks;
 
-namespace SSM.Administrator.WebApi.Support
+namespace SSM.Administrator.WebApi.Core.Base
 {
     public class BaseService
     {

@@ -11,8 +11,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using SSM.Administrator.Data;
-using SSM.Administrator.WebApi.Authentication;
-using SSM.Administrator.WebApi.Core.Services;
+using SSM.Administrator.WebApi.Core.Context;
 using System;
 using System.Text;
 using System.Threading.Tasks;
@@ -39,7 +38,7 @@ namespace SSM.Administrator.WebApi
             services.AddScoped<ApplicationDbContext, ApplicationDbContext>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-
+            //services.AddAutoMapper();
             //services.AddDbContextFactory<ApplicationDbContext>(
             //    options =>
             //        options.UseSqlServer(Configuration.GetConnectionString("ConnStr")));

@@ -1,8 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using SSM.Administrator.Business;
-using SSM.Administrator.WebApi.Support;
+using SSM.Administrator.WebApi.Core.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,9 +28,6 @@ namespace SSM.Administrator.WebApi.Controllers
         [HttpPost]
         public IEnumerable<WeatherForecast> Get()
         {
-            var businessController = CreateBusiness<AuthenticationManager>();
-                businessController.RetrieveProfileByCredentials("ssmacena", "Wso@p77");
-
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
             {

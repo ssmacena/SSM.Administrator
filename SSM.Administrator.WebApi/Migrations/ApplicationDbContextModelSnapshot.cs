@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using System;
-using SSM.Administrator.WebApi.Authentication;
+using SSM.Administrator.WebApi.Core.Context;
 
 namespace SSM.Administrator.WebApi.Migrations
 {

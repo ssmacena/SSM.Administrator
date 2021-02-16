@@ -22,6 +22,12 @@ namespace SSM.Administrator.Business
             return customer;
         }
 
+        public List<Clientes> GetAll()
+        {
+            List<Clientes> customer = _dbContext.SJSS_Customer.OrderBy(item => item.Nome).ToList(); ;
+            return customer;
+        }
+
         public bool SaveCustomer(Clientes customer)
         {
             bool result = false;

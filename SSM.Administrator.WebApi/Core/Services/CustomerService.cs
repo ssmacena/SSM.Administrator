@@ -1,13 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using SSM.Administrator.Business;
-using SSM.Administrator.Data;
 using SSM.Administrator.Entity;
-using SSM.Administrator.WebApi.Support;
-using System;
+using SSM.Administrator.WebApi.Core.Base;
 using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
 
 namespace SSM.Administrator.WebApi.Core.Services
 {
@@ -21,6 +16,16 @@ namespace SSM.Administrator.WebApi.Core.Services
 
             var businessController = CreateBusiness<CustomerBS>();
             customer = businessController.GetByIdCustomer(idCustomer);
+
+            return customer;
+        }
+
+        public List<Clientes> GetAll()
+        {
+            List<Clientes> customer = null;
+
+            var businessController = CreateBusiness<CustomerBS>();
+            customer = businessController.GetAll();
 
             return customer;
         }

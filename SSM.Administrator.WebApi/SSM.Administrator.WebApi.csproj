@@ -5,17 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Authentication\ApplicationRole.cs" />
-    <Compile Remove="Authentication\ApplicationUserManager.cs" />
-    <Compile Remove="Controllers\AntiForgeryController.cs" />
-    <Compile Remove="Controllers\InitController.cs" />
     <Compile Remove="Migrations\20201122150917_Initial.cs" />
     <Compile Remove="Migrations\20201122150917_Initial.Designer.cs" />
     <Compile Remove="Migrations\20210204211411_AddedAnotherPropertyToFoo.cs" />
     <Compile Remove="Migrations\20210204211411_AddedAnotherPropertyToFoo.Designer.cs" />
     <Compile Remove="Migrations\20210206134549_Identity.cs" />
     <Compile Remove="Migrations\20210206134549_Identity.Designer.cs" />
-    <Compile Remove="Support\DataContextSet.cs" />
   </ItemGroup>
 
   <ItemGroup>
