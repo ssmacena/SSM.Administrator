@@ -64,7 +64,7 @@ namespace SSM.Administrator.Business
 
         public List<Clientes> GetByFilterCustomer(string nmCliente)
         {
-            List<Clientes> customer = _dbContext.SJSS_Customer.Where(x => EF.Functions.Like(x.Nome, "$%{nmCliente}%")).ToList();
+            List<Clientes> customer = _dbContext.SJSS_Customer.Where(x => EF.Functions.Like(x.Nome, "%" + nmCliente + "%")).ToList();
             return customer;
         }
 

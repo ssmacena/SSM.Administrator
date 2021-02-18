@@ -32,7 +32,6 @@ export class HomeComponent extends Destroyer implements OnInit {
 
   ngOnInit() {
     // get return url from route parameters or default to '/'
-    this.toastr.success('Download realizado com sucesso!', 'Download');
     this.returnUrl = this.route.snapshot.paramMap.get('returnUrl')!;
   }
 

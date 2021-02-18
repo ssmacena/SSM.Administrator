@@ -3,11 +3,11 @@
  *  API -> Application Program Interface
  *  SN -> Storage Name
  */
-
+//http://localhost:59921/public/init
 export const appConfig: any = {
   API_URL: '/api/public/',
   API_SECURE_URL: '/api/secure/',
-  BASE_URL: 'ib/',
+  BASE_URL: '/',
 
   SITEMINDER_LOGOUT_URL: '/customer/ib/accesssm/processlogout',
   SITEMINDER_MAIN_ROUTE_REDIRECT: '/account',

@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { LOCALE_ID } from '@angular/core';
@@ -29,6 +29,7 @@ import {
 
 // features
 import { HomeModule } from './modules/home/home.module';
+import { RegisterModule } from './modules/register/register.module';
 //import { AccountModule } from './modules/account/account.module';
 
 @NgModule({
@@ -59,7 +60,7 @@ import { HomeModule } from './modules/home/home.module';
 
     // features
     HomeModule,
-    //AccountModule,
+    RegisterModule,
 
     // app
     AppRoutingModule,
@@ -75,5 +76,6 @@ import { HomeModule } from './modules/home/home.module';
     { provide: LOCALE_ID, useValue: 'pt-BR' },
   ],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

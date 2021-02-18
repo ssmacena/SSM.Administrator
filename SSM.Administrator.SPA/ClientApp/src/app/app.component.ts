@@ -28,7 +28,7 @@ export class AppComponent extends Destroyer implements OnInit {
 
   ngOnInit() {
     this.router.navigate([appConfig.MAIN_ROUTE]);
-    // this.app.init();
+    this.app.init();
     // this.auth.loggedIn$.pipe(takeUntil(this.destroy$)).subscribe((logged) => {
     //   if (!logged) {
     //     this.router.navigate([appConfig.MAIN_ROUTE]);

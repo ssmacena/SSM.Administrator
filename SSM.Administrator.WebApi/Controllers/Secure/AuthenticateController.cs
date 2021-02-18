@@ -52,6 +52,10 @@ namespace SSM.Administrator.WebApi.Controllers.Secure
 
             //await _userManager.AddToRoleAsync(user, "Admin");
 
+            //await _userManager.AddToRoleAsync(user, "Operator");
+
+            //await _userManager.AddToRoleAsync(user, "User");
+
 
             if (user != null && await _userManager.CheckPasswordAsync(user, model.Password))
             {

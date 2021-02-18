@@ -10,7 +10,7 @@ namespace SSM.Administrator.WebApi.Controllers
 {
     [Authorize]
     [ApiController]
-    [Route("customer")]
+    [Route("api/secure/customer")]
     public class CustomerController : WebApiControllerBase
     {
         private CustomerService service;
@@ -96,7 +96,7 @@ namespace SSM.Administrator.WebApi.Controllers
         //POST: customer/save-entity
         [Route("getByFilter")]
         [HttpGet]
-        public IActionResult GetByFilter([FromBody] string nmCliente)
+        public IActionResult GetByFilter(string nmCliente)
         {
             IActionResult response = BadRequest();
 

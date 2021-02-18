@@ -1,0 +1,45 @@
+<div class="row s4-notdlg" id="banner-container">
+  <div class="page-header-internal-img banner-header-page-account">
+  </div>
+</div>
+
+<div class="row" id="content-main">
+  <div>
+    <app-breadcrumb></app-breadcrumb>
+    <div class="row" id="content-main">
+      <accordion [isAnimated]="true" style="width:1000px; overflow:hidden;">
+        <accordion-group heading=".:Filtro">
+          <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="col-xs-12">
+                <button
+                  type="submit"
+                  class="btn btn-success"
+                  [disabled]="!searchForm.valid">Save</button>
+                <button type="button" class="btn btn-danger" (click)="onCancel()">Cancel</button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="form-group">
+                  <label for="name">Name</label>
+                  <input
+                    type="text"
+                    id="name"
+                    formControlName="name"
+                    class="form-control">
+                </div>
+              </div>
+            </div>
+          </form>
+        </accordion-group>
+        <accordion-group heading=".:Cadastro">
+          <p>Some content</p>
+        </accordion-group>
+      </accordion>
+      <div id="col-02" class="col-md-9">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

@@ -2,11 +2,10 @@
 
 namespace SSM.Administrator.WebApi.Controllers
 {
-    [Route("public/init")]
+    [Route("api/public/init")]
     public class InitController : Controller
     {
-        [Route("index")]
-        [HttpGet]
+        [HttpPost]
         public IActionResult Index()
         {
             return Ok(true);

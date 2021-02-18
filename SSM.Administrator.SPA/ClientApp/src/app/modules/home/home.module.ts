@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 
 //// 3rd party
@@ -10,12 +10,12 @@ import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home.routing';
 
 @NgModule({
-    declarations: [
-        HomeComponent,
-        SecurityInfoComponent,
-        HelpFaqComponent,
-        LinksComponent
-    ],
+  declarations: [
+    HomeComponent,
+    SecurityInfoComponent,
+    HelpFaqComponent,
+    LinksComponent,
+  ],
   imports: [
     // angular
     ReactiveFormsModule,
@@ -25,7 +25,8 @@ import { HomeRoutingModule } from './home.routing';
     // core & shared
     SharedModule,
 
-    HomeRoutingModule
-  ]
+    HomeRoutingModule,
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
-export class HomeModule { }
+export class HomeModule {}
