@@ -17,7 +17,7 @@ export class CustomerService {
   public getCustomer(requestModel: any) {
     let params = new HttpParams();
     params = params.set('nmCliente', requestModel);
-
+    console.log(requestModel);
     console.log(ApiRouteHelper.secureRoute('customer/getByFilter'));
     return this.http
       .get<Customer[]>(ApiRouteHelper.secureRoute('customer/getByFilter'), {

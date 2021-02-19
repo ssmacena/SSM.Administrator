@@ -1,14 +1,27 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular//common/http';
 
-import { map, catchError, mergeMap, take, takeUntil } from 'rxjs/operators';
+import {
+  map,
+  catchError,
+  mergeMap,
+  take,
+  takeUntil,
+  tap,
+} from 'rxjs/operators';
 import { interval, Observable, of, forkJoin, Subject, empty } from 'rxjs';
 
 import { appConfig } from '@app/app-config';
 import { AntiforgeryTokenService } from '@app/core/services';
 import { ApiRouteHelper, JsonHelper, ErrorHelper } from '@app/core/helpers';
 import { SessionnService } from './session.service';
+import { User } from '../models/user.model';
 
+export interface AuthResponseData {
+  email: string;
+  token: string;
+  expiresIn: string;
+}
 @Injectable({
   providedIn: 'root',
 })
@@ -37,19 +50,33 @@ export class AuthenticationService {
     this.timerTimeout$ = interval(1000); //1 seconds
   }
 
-  login() {
+  login(email: string, password: string) {
     let antiforgery$ = this.antiforgery.generate();
-    let maintenance$ = this.maintenance();
-    let authenticate$ = this.authenticate();
-
-    return authenticate$.pipe(
-      mergeMap(() => {
-        if (this.loggedIn) {
-          return forkJoin(antiforgery$, maintenance$);
-        }
-        return empty();
+    //"http://localhost:59922/secure/user/login"
+    console.log(ApiRouteHelper.secureRoute('user/login'));
+    return this.http
+      .post<AuthResponseData>(ApiRouteHelper.secureRoute('user/login'), {
+        username: email,
+        password: password,
       })
-    );
+      .pipe(
+        catchError(ErrorHelper.handle),
+        tap((resData) => {
+          this.handleAuthentication(email, resData.token, +resData.expiresIn);
+        })
+      );
+
+    // let maintenance$ = this.maintenance();
+    // let authenticate$ = this.authenticate();
+
+    // return authenticate$.pipe(
+    //   mergeMap(() => {
+    //     if (this.loggedIn) {
+    //       return forkJoin(antiforgery$, maintenance$);
+    //     }
+    //     return empty();
+    //   })
+    // );
   }
 
   logout() {
@@ -108,6 +135,7 @@ export class AuthenticationService {
   }
 
   //============================================================================================ #Privates Methods
+  //"http://localhost:59922/secure/user/login"
   private authenticate() {
     return this.http
       .post(
@@ -194,14 +222,15 @@ export class AuthenticationService {
     return value * 60; //(convert to seconds);
   }
 
-  private maintenance() {
-    return this.http
-      .get<any>(ApiRouteHelper.secureRoute('user/maintenance'))
-      .pipe(
-        map((isInMaintenance) => {
-          this.isInMaintenance = isInMaintenance;
-          return isInMaintenance;
-        })
-      );
+  private handleAuthentication(
+    email: string,
+    token: string,
+    expiresIn: number
+  ) {
+    const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
+    const user = new User(email, token, expirationDate);
+    //this.user.next(user);
+    //this.autoLogout(expiresIn * 1000);
+    localStorage.setItem(appConfig.SN_TOKEN, JSON.stringify(user));
   }
 }

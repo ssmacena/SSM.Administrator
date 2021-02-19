@@ -30,7 +30,6 @@ import {
 // features
 import { HomeModule } from './modules/home/home.module';
 import { RegisterModule } from './modules/register/register.module';
-//import { AccountModule } from './modules/account/account.module';
 
 @NgModule({
   declarations: [AppComponent],

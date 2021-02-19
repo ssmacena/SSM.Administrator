@@ -43,7 +43,7 @@ export class CustomerComponent extends Destroyer implements OnInit {
 
   onSubmit() {
     if (!this.invalidForm()) {
-      this.currentSearchForm = this.searchForm.value;
+      this.currentSearchForm = this.searchForm.get('name')?.value;
       console.log(this.currentSearchForm);
       this.getCustomer();
     }

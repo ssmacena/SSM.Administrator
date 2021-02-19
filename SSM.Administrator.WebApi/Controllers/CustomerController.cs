@@ -10,7 +10,7 @@ namespace SSM.Administrator.WebApi.Controllers
 {
     [Authorize]
     [ApiController]
-    [Route("api/secure/customer")]
+    [Route("secure/customer")]
     public class CustomerController : WebApiControllerBase
     {
         private CustomerService service;

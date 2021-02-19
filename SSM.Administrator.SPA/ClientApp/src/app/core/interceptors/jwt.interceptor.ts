@@ -19,13 +19,20 @@ export class JwtInterceptor implements HttpInterceptor {
     request: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    const token = localStorage.getItem(appConfig.SN_TOKEN);
+    //const token = localStorage.getItem(appConfig.SN_TOKEN);
+
+    const data = localStorage.getItem('userData') || '{}';
+    const userData: {
+      email: string;
+      _token: string;
+      _tokenExpirationDate: string;
+    } = JSON.parse(data);
 
     // add authorization header with jwt token if available
-    if (token != null) {
+    if (userData) {
       request = request.clone({
         setHeaders: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${userData._token}`,
         },
       });
     }

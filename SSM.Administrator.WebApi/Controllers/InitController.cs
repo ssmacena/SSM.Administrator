@@ -2,7 +2,7 @@
 
 namespace SSM.Administrator.WebApi.Controllers
 {
-    [Route("api/public/init")]
+    [Route("public/init")]
     public class InitController : Controller
     {
         [HttpPost]

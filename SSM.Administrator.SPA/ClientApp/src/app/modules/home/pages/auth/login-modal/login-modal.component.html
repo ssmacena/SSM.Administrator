@@ -1,0 +1,27 @@
+<div *ngIf="isModalShown" [config]="{ show: true }" (onHidden)="onHidden()" bsModal #autoShownModal="bs-modal">
+  <div class="modal-header">
+    <span class="modal-title pull-left"><i class="fa fa-comment-alt"></i>Login Sistem SSM</span>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="authForm" (ngSubmit)="onSubmit(authForm.value)">
+      <div class="form-group">
+        <label for="email">E-Mail</label>
+        <input type="email" formControlName="email" id="email" class="form-control" name="email" />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" formControlName="password" id="password" class="form-control" name="password"
+          autocomplete="off" />
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <div>
+      <button type="submit" class="btn btn-primary" (click)="onPostFormSubmit()">Login</button>
+      |
+      <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="onClose()">
+        cancel
+      </button>
+    </div>
+  </div>
+</div>

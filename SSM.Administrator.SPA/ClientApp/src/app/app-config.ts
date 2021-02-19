@@ -12,7 +12,7 @@ export const appConfig: any = {
   SITEMINDER_LOGOUT_URL: '/customer/ib/accesssm/processlogout',
   SITEMINDER_MAIN_ROUTE_REDIRECT: '/account',
 
-  SN_TOKEN: 'BNPP.User',
+  SN_TOKEN: 'userData',
   SN_DATE_DOMAIN: 'BNPP.DateDomain',
   SN_CONFIG_DOMAIN: 'BNPP.ConfigDomain',
   SN_INVESTOR_PROFILE: 'BNPP.InvestorProfile',
