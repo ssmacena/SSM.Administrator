@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -7,6 +7,7 @@ import { ErrorHelper } from '@app/core/helpers';
 import { Destroyer } from '@app/core/super-class';
 import { share, catchError, takeUntil } from 'rxjs/operators';
 import { Observable, empty } from 'rxjs';
+import { TabsetComponent } from 'ngx-bootstrap/tabs';
 
 @Component({
   selector: 'app-customer',
@@ -14,6 +15,7 @@ import { Observable, empty } from 'rxjs';
   styleUrls: ['./customer.component.css'],
 })
 export class CustomerComponent extends Destroyer implements OnInit {
+  @ViewChild(TabsetComponent) tabset: TabsetComponent;
   customer$: Observable<any>;
   customerId: number;
   searchForm: FormGroup;
@@ -42,6 +44,7 @@ export class CustomerComponent extends Destroyer implements OnInit {
   }
 
   onSubmit() {
+    this.tabset.tabs[0].active = true;
     if (!this.invalidForm()) {
       this.currentSearchForm = this.searchForm.get('name')?.value;
       console.log(this.currentSearchForm);
@@ -50,6 +53,7 @@ export class CustomerComponent extends Destroyer implements OnInit {
   }
 
   onPageChange(config: any) {
+    //this.tabset.tabs[1].active = true;
     this.currentSearchForm.Start = config.start;
     this.currentSearchForm.Draw = config.currentPage;
     this.getCustomer();
@@ -57,6 +61,10 @@ export class CustomerComponent extends Destroyer implements OnInit {
 
   onCancel() {
     this.router.navigate(['../'], { relativeTo: this.route });
+  }
+
+  customerWasSelected() {
+    this.tabset.tabs[1].active = true;
   }
 
   invalidForm(): boolean {

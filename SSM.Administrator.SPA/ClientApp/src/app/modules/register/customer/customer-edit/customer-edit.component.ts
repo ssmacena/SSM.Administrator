@@ -1,4 +1,11 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  EventEmitter,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Customer } from '@app/business/models';
 import { CustomerService } from '@app/business/services/Customer.service';
@@ -14,7 +21,9 @@ import { catchError, map, share, takeUntil } from 'rxjs/operators';
   styleUrls: ['./customer-edit.component.css'],
 })
 export class CustomerEditComponent extends Destroyer implements OnInit {
-  @Input() customerId: number;
+  @Output() customersChanged = new EventEmitter<void>();
+  @ViewChild('deletarButton') buttonDeletar;
+  @ViewChild('salvarButton') buttonSalvar;
   editMode = false;
   customerForm: FormGroup;
   selectedCustomer: Customer;
@@ -48,25 +57,28 @@ export class CustomerEditComponent extends Destroyer implements OnInit {
       siglaEstado: [null, [Validators.required, Validators.maxLength(5)]],
       cidade: [null, [Validators.required]],
     });
-    console.log('ngOnInit: CustomerEditComponent');
     CustomerService.customerWasSelected.subscribe(
       (customerSelected: Customer) => {
         this.selectedCustomer = customerSelected;
         this.initForm();
       }
     );
+    //this.buttonDeletar.nativeElement.disabled = true;
+    //this.buttonSalvar.nativeElement.disabled = true;
   }
 
   onSaveCustomer() {
-    console.log(this.customerForm.value);
-    console.log(this.customerForm.valid);
     if (this.customerForm.valid) {
-      console.log('submit');
       this.customerService
         .saveCustomer(this.customerForm.value)
         .pipe(takeUntil(this.destroy$))
         .subscribe(
           (responseData) => {
+            this.customersChanged.emit();
+            this.toastr.success(
+              'Registro do cliente salvo com sucesso!',
+              'Cliente'
+            );
             return responseData;
           },
           (error) => {
@@ -79,7 +91,26 @@ export class CustomerEditComponent extends Destroyer implements OnInit {
     }
   }
 
-  onDeleteCustomer() {}
+  onDeleteCustomer() {
+    if (confirm('Tem certeza que deseja excluir este cliente?')) {
+      this.customerService
+        .deleteCustomer(this.selectedCustomer.id)
+        .pipe(takeUntil(this.destroy$))
+        .subscribe(
+          (success) => {
+            this.onClearForm();
+            this.customersChanged.emit();
+            this.toastr.success('Registro deletado com sucesso!', 'Cliente');
+          },
+          (error) => {
+            this.toastr.error(
+              error.message,
+              ErrorHelper.raiseDefaultErrorTitle
+            );
+          }
+        );
+    }
+  }
 
   private initForm() {
     this.customerForm.patchValue({
@@ -95,6 +126,8 @@ export class CustomerEditComponent extends Destroyer implements OnInit {
       siglaEstado: this.selectedCustomer.siglaEstado,
       cidade: this.selectedCustomer.cidade,
     });
+    this.buttonDeletar.nativeElement.disabled = false;
+    this.buttonSalvar.nativeElement.disabled = false;
   }
 
   onClearForm() {
@@ -111,5 +144,6 @@ export class CustomerEditComponent extends Destroyer implements OnInit {
       siglaEstado: null,
       cidade: null,
     });
+    this.buttonDeletar.nativeElement.disabled = true;
   }
 }

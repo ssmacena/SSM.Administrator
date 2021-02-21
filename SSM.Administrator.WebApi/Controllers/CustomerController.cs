@@ -5,6 +5,7 @@ using SSM.Administrator.Entity;
 using SSM.Administrator.WebApi.Core.Base;
 using SSM.Administrator.WebApi.Core.Services;
 using System;
+using System.Threading.Tasks;
 
 namespace SSM.Administrator.WebApi.Controllers
 {
@@ -75,7 +76,7 @@ namespace SSM.Administrator.WebApi.Controllers
         //POST: customer/save-entity
         [Route("save-entity")]
         [HttpPost]
-        public IActionResult Save([FromBody] Clientes model)
+        public async Task<IActionResult> Save([FromBody] Clientes model)
         {
             IActionResult response = BadRequest();
 
@@ -116,13 +117,13 @@ namespace SSM.Administrator.WebApi.Controllers
 
         // DELETE api/contacts/{guid}
         [HttpDelete("{id}")]
-        public IActionResult DeleteById(int customerId)
+        public IActionResult DeleteById(int id)
         {
             IActionResult response = BadRequest();
 
             try
             {
-                var result = this.service.DeleteByIdCustomer(customerId);
+                var result = this.service.DeleteByIdCustomer(id);
                 response = Ok(result);
             }
             catch (Exception ex)

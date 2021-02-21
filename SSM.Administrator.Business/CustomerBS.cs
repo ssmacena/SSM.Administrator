@@ -41,8 +41,10 @@ namespace SSM.Administrator.Business
                 {
                     customer.DataAlteracao = DateTime.Now;
                     customer.IdUserCriacao = CurrentUserId;
+                    _dbContext.SJSS_Customer.Attach(customer);
                     _dbContext.Entry(customer).State = EntityState.Modified;
-                    _dbContext.SJSS_Customer.Update(customer);
+                    _dbContext.Entry(customer).Property(x => x.DataCriacao).IsModified = false;
+                    _dbContext.Entry(customer).Property(x => x.IdUserCriacao).IsModified = false;
                     _dbContext.SaveChanges();
                 }
                 else

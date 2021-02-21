@@ -6,22 +6,18 @@
                   <table class="table table-striped table-bordered" *ngIf="(data?.length > 0); else elseBlock">
                       <thead>
                           <tr align="left">
-                              <th scope="col">Nome</th>
-                              <th scope="col">Email</th>
-                              <th scope="col">Rua</th>
-                              <th scope="col">Número</th>
-                              <th scope="col">Cep</th>
-                              <th scope="col">Data Criação</th>
+                              <th class="align-left text-sm-left" scope="col">Nome</th>
+                              <th class="align-left text-sm-left" scope="col">Email</th>
+                              <th class="align-left text-sm-left" scope="col">Sigla Estado</th>
+                              <th class="align-left text-sm-left text-nowrap" scope="col">Data Criação</th>
                               <th></th>
                           </tr>
                       </thead>
                       <tbody>
                           <tr *ngFor="let customer of data | paginate: config; let i = index">
-                              <td class="align-middle text-left" scope="row">{{customer.nome}}</td>
-                              <td class="align-middle text-left" scope="row">{{customer.email}}</td>
-                              <td class="align-middle text-left" scope="row">{{customer.rua}}</td>
-                              <td class="align-middle text-left" scope="row">{{customer.numeroEndereco}}</td>
-                              <td class="align-middle text-left" scope="row">{{customer.cep}}</td>
+                              <td class="align-middle text-sm-left text-nowrap" scope="row">{{customer.nome}}</td>
+                              <td class="align-middle text-sm-left" scope="row">{{customer.email}}</td>
+                              <td class="align-middle text-sm-left" scope="row">{{customer.siglaEstado}}</td>
                               <th class="align-middle" scope="row">{{customer.dataCriacao | date: 'dd/MM/yyyy'}}</th>
                               <td>
                                 <span class="float-right">

@@ -54,7 +54,7 @@ export class CustomerService {
   //   return `${appConfig.API_SECURE_URL}${url}`;
   // } API_SECURE_URL: '/api/secure/',
 
-  public deleteCustomer(id) {
-    return this.http.delete(`${appConfig.API_SECURE_URL}customer/${id}`);
+  public deleteCustomer(id: number) {
+    return this.http.delete(ApiRouteHelper.secureRoute('customer/' + `${id}`));
   }
 }

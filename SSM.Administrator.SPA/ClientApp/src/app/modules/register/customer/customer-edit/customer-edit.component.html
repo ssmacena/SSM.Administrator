@@ -1,6 +1,6 @@
 <form [formGroup]="customerForm" (ngSubmit)="onSaveCustomer()">
-  <button class="btn btn-success" type="submit" (click)="onSaveCustomer()">Salvar</button>
-  <button class="btn btn-danger" type="button" (click)="onDeleteCustomer()">Deletar</button>
+  <button class="btn btn-success" type="submit" (click)="onSaveCustomer()" #salvarButton>Salvar</button>
+  <button class="btn btn-danger" type="button" (click)="onDeleteCustomer()" #deletarButton>Deletar</button>
   <button class="btn btn-primary" type="button" (click)="onClearForm()">Limpar campos</button>
   <div class="form-group">
     <label for="nome">Nome</label>
