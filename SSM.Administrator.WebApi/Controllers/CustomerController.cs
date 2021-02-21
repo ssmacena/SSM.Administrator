@@ -33,7 +33,7 @@ namespace SSM.Administrator.WebApi.Controllers
         // GET api/customer/{guid}
         [Route("getById")]
         [HttpGet]
-        public IActionResult Get([FromBody] int customerId)
+        public IActionResult Get(int customerId)
         {
             IActionResult response = BadRequest();
 

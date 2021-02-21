@@ -1,0 +1,85 @@
+<form [formGroup]="customerForm" (ngSubmit)="onSaveCustomer()">
+  <button class="btn btn-success" type="submit" (click)="onSaveCustomer()">Salvar</button>
+  <button class="btn btn-danger" type="button" (click)="onDeleteCustomer()">Deletar</button>
+  <button class="btn btn-primary" type="button" (click)="onClearForm()">Limpar campos</button>
+  <div class="form-group">
+    <label for="nome">Nome</label>
+    <input
+      type="text"
+      id="nome"
+      formControlName="nome"
+      class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="email">Mail</label>
+    <input
+      type="text"
+      id="email"
+      formControlName="email"
+      class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="emailConfirmar">Confirmar e-mail</label>
+    <input
+      type="text"
+      id="emailConfirmar"
+      formControlName="emailConfirmar"
+      class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="cep">Cep</label>
+    <input
+      type="text"
+      id="cep"
+      formControlName="cep"
+      class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="numeroEndereco">Número</label>
+    <input
+      type="text"
+      id="numeroEndereco"
+      formControlName="numeroEndereco"
+      class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="complemento">Complemento</label>
+    <input
+      type="text"
+      id="complemento"
+      formControlName="complemento"
+      class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="rua">Rua</label>
+    <input
+      type="text"
+      id="rua"
+      formControlName="rua"
+      class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="name">Bairro</label>
+    <input
+      type="text"
+      id="bairro"
+      formControlName="bairro"
+      class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="siglaEstado">Sigla Estado</label>
+    <input
+      type="text"
+      id="siglaEstado"
+      formControlName="siglaEstado"
+      class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="cidade">Cidade</label>
+    <input
+      type="text"
+      id="cidade"
+      formControlName="cidade"
+      class="form-control">
+  </div>
+</form>

@@ -42,7 +42,7 @@ namespace SSM.Administrator.Business
                     customer.DataAlteracao = DateTime.Now;
                     customer.IdUserCriacao = CurrentUserId;
                     _dbContext.Entry(customer).State = EntityState.Modified;
-                    _dbContext.SJSS_Customer.Attach(customer);
+                    _dbContext.SJSS_Customer.Update(customer);
                     _dbContext.SaveChanges();
                 }
                 else

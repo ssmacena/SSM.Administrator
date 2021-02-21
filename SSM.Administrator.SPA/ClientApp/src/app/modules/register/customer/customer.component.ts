@@ -15,13 +15,13 @@ import { Observable, empty } from 'rxjs';
 })
 export class CustomerComponent extends Destroyer implements OnInit {
   customer$: Observable<any>;
-
+  customerId: number;
   searchForm: FormGroup;
   currentSearchForm: any;
   constructor(
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
-    public customerService: CustomerService,
+    private customerService: CustomerService,
     private toastr: ToastrService,
     private router: Router
   ) {
@@ -47,6 +47,12 @@ export class CustomerComponent extends Destroyer implements OnInit {
       console.log(this.currentSearchForm);
       this.getCustomer();
     }
+  }
+
+  onPageChange(config: any) {
+    this.currentSearchForm.Start = config.start;
+    this.currentSearchForm.Draw = config.currentPage;
+    this.getCustomer();
   }
 
   onCancel() {
