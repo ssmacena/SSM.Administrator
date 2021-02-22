@@ -11,12 +11,8 @@ import { appConfig } from '@app/app-config';
   providedIn: 'root',
 })
 export class CustomerService {
-  static customerWasSelected = new EventEmitter<Customer>();
-  selectedCustomer: Customer;
   constructor(private http: HttpClient) {}
 
-  //http://localhost:59921/customer/getByFilter?nmCliente=Silvio
-  //API_SECURE_URL: '/api/secure/',
   public getCustomer(filterModel: any) {
     let params = new HttpParams();
     params = params.set('nmCliente', filterModel);
@@ -32,14 +28,12 @@ export class CustomerService {
     let params = new HttpParams();
     params = params.set('customerId', customerId.toString());
 
-    return this.http
-      .get<Customer>(ApiRouteHelper.secureRoute('customer/getById'), {
+    return this.http.get<Customer>(
+      ApiRouteHelper.secureRoute('customer/getById'),
+      {
         params,
-      })
-      .subscribe((customer: Customer) => {
-        this.selectedCustomer = customer;
-        CustomerService.customerWasSelected.emit(customer);
-      });
+      }
+    );
   }
 
   public saveCustomer(record: any) {

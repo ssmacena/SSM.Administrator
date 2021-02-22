@@ -5,6 +5,8 @@ import {
   EventEmitter,
   Output,
   ViewChild,
+  SimpleChanges,
+  OnChanges,
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Customer } from '@app/business/models';
@@ -13,15 +15,18 @@ import { ErrorHelper } from '@app/core/helpers';
 import { Destroyer } from '@app/core/super-class';
 import { ToastrService } from 'ngx-toastr';
 import { empty, Observable } from 'rxjs';
-import { catchError, map, share, takeUntil } from 'rxjs/operators';
+import { catchError, map, share, takeUntil, first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-customer-edit',
   templateUrl: './customer-edit.component.html',
   styleUrls: ['./customer-edit.component.css'],
 })
-export class CustomerEditComponent extends Destroyer implements OnInit {
+export class CustomerEditComponent
+  extends Destroyer
+  implements OnInit, OnChanges {
   @Output() customersChanged = new EventEmitter<void>();
+  @Input() idCustomer: number = 0;
   @ViewChild('deletarButton') buttonDeletar;
   @ViewChild('salvarButton') buttonSalvar;
   editMode = false;
@@ -57,14 +62,29 @@ export class CustomerEditComponent extends Destroyer implements OnInit {
       siglaEstado: [null, [Validators.required, Validators.maxLength(5)]],
       cidade: [null, [Validators.required]],
     });
-    CustomerService.customerWasSelected.subscribe(
-      (customerSelected: Customer) => {
-        this.selectedCustomer = customerSelected;
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    let change = changes['idCustomer'];
+
+    if (!change.firstChange) this.onGetCustomerById();
+  }
+
+  onEdit(id: number) {
+    console.log('receive' + id);
+  }
+
+  onGetCustomerById() {
+    this.customerService.getCustomerById(this.idCustomer).subscribe(
+      (responseData) => {
+        this.selectedCustomer = responseData;
         this.initForm();
+        return responseData;
+      },
+      (error) => {
+        this.toastr.error(error.message, ErrorHelper.raiseDefaultErrorTitle);
       }
     );
-    //this.buttonDeletar.nativeElement.disabled = true;
-    //this.buttonSalvar.nativeElement.disabled = true;
   }
 
   onSaveCustomer() {

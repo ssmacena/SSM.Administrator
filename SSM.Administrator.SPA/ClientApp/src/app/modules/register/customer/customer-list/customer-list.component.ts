@@ -24,7 +24,7 @@ export class CustomerListComponent
   extends Destroyer
   implements OnInit, OnChanges {
   @Output() pageChange: EventEmitter<any> = new EventEmitter<any>();
-  @Output() customerSelected = new EventEmitter<void>();
+  @Output() customerSelected = new EventEmitter<number>();
   @Input() data: any;
   @Input() show: boolean;
   @Changes('data') data$; //it listen changes on "@Input() data: any" variable.
@@ -63,7 +63,6 @@ export class CustomerListComponent
   }
 
   onEdit(id: number) {
-    this.customerService.getCustomerById(id);
-    this.customerSelected.emit();
+    this.customerSelected.emit(id);
   }
 }

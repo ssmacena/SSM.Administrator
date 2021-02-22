@@ -1,4 +1,10 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -8,6 +14,7 @@ import { Destroyer } from '@app/core/super-class';
 import { share, catchError, takeUntil } from 'rxjs/operators';
 import { Observable, empty } from 'rxjs';
 import { TabsetComponent } from 'ngx-bootstrap/tabs';
+import { AccordionPanelComponent } from 'ngx-bootstrap/accordion';
 
 @Component({
   selector: 'app-customer',
@@ -16,6 +23,8 @@ import { TabsetComponent } from 'ngx-bootstrap/tabs';
 })
 export class CustomerComponent extends Destroyer implements OnInit {
   @ViewChild(TabsetComponent) tabset: TabsetComponent;
+  @ViewChild('filtroAccordion') accordionFiltro: AccordionPanelComponent;
+  @ViewChild('cadastroAccordion') accordionCadastro: AccordionPanelComponent;
   customer$: Observable<any>;
   customerId: number;
   searchForm: FormGroup;
@@ -49,6 +58,7 @@ export class CustomerComponent extends Destroyer implements OnInit {
       this.currentSearchForm = this.searchForm.get('name')?.value;
       console.log(this.currentSearchForm);
       this.getCustomer();
+      this.accordionCadastro.isOpen = true;
     }
   }
 
@@ -63,8 +73,10 @@ export class CustomerComponent extends Destroyer implements OnInit {
     this.router.navigate(['../'], { relativeTo: this.route });
   }
 
-  customerWasSelected() {
+  onCustomerWasSelected(id: number) {
     this.tabset.tabs[1].active = true;
+    this.accordionFiltro.isOpen = false;
+    this.customerId = id;
   }
 
   invalidForm(): boolean {

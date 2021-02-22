@@ -8,7 +8,7 @@
     <app-breadcrumb></app-breadcrumb>
     <div class="row" id="content-main">
       <accordion [isAnimated]="true" style="width:1000px; overflow:hidden;">
-        <accordion-group heading=".:Filtro">
+        <accordion-group #filtroAccordion heading=".:Filtro">
           <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
             <div class="row">
               <div class="col-xs-12">
@@ -24,14 +24,14 @@
             </div>
           </form>
         </accordion-group>
-        <accordion-group heading=".:Cadastro">
+        <accordion-group #cadastroAccordion heading=".:Cadastro">
           <tabset #tabSet>
             <tab id="lista">
               <ng-template tabHeading>
                 <span>&nbsp;Lista de Clientes</span>
               </ng-template>
               <br />
-              <app-customer-list (customerSelected)="customerWasSelected()" [show]="true" (pageChange)="onPageChange($event)" [data]="customer$">
+              <app-customer-list (customerSelected)="onCustomerWasSelected($event)" [show]="true" (pageChange)="onPageChange($event)" [data]="customer$">
               </app-customer-list>
             </tab>
             <tab id="report-income">
@@ -39,7 +39,7 @@
                 <span>&nbsp;Edição</span>
               </ng-template>
               <br />
-              <app-customer-edit (customersChanged)="onSubmit()" [customerId]="customerId"></app-customer-edit>
+              <app-customer-edit [idCustomer]="customerId" (customersChanged)="onSubmit()"></app-customer-edit>
             </tab>
           </tabset>
         </accordion-group>
