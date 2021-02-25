@@ -25,7 +25,8 @@ import { catchError, map, share, takeUntil, first } from 'rxjs/operators';
 export class CustomerEditComponent
   extends Destroyer
   implements OnInit, OnChanges {
-  @Output() customersChanged = new EventEmitter<void>();
+  @Output() customersChangedEvent = new EventEmitter<void>();
+  @Output() resetFormEvent = new EventEmitter<void>();
   @Input() idCustomer: number = 0;
   @ViewChild('deletarButton') buttonDeletar;
   @ViewChild('salvarButton') buttonSalvar;
@@ -42,43 +43,24 @@ export class CustomerEditComponent
   }
 
   ngOnInit(): void {
-    this.customerForm = this.formBuilder.group({
-      id: [null],
-      nome: [
-        null,
-        [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(35),
-        ],
-      ],
-      email: [null, [Validators.required, Validators.email]],
-      emailConfirmar: [null, [Validators.required]],
-      cep: [null, [Validators.required, Validators.maxLength(15)]],
-      rua: [null, [Validators.required]],
-      numeroEndereco: [null],
-      complemento: [null],
-      bairro: [null, [Validators.required]],
-      siglaEstado: [null, [Validators.required, Validators.maxLength(5)]],
-      cidade: [null, [Validators.required]],
-    });
+    this.initializeForm();
   }
 
   ngOnChanges(changes: SimpleChanges) {
     let change = changes['idCustomer'];
 
-    if (!change.firstChange) this.onGetCustomerById();
+    if (!change.firstChange && change.currentValue != 0) this.getCustomerById();
   }
 
   onEdit(id: number) {
     console.log('receive' + id);
   }
 
-  onGetCustomerById() {
+  getCustomerById() {
     this.customerService.getCustomerById(this.idCustomer).subscribe(
       (responseData) => {
         this.selectedCustomer = responseData;
-        this.initForm();
+        this.populateFields();
         return responseData;
       },
       (error) => {
@@ -94,7 +76,7 @@ export class CustomerEditComponent
         .pipe(takeUntil(this.destroy$))
         .subscribe(
           (responseData) => {
-            this.customersChanged.emit();
+            this.customersChangedEvent.emit();
             this.toastr.success(
               'Registro do cliente salvo com sucesso!',
               'Cliente'
@@ -119,7 +101,7 @@ export class CustomerEditComponent
         .subscribe(
           (success) => {
             this.onClearForm();
-            this.customersChanged.emit();
+            this.customersChangedEvent.emit();
             this.toastr.success('Registro deletado com sucesso!', 'Cliente');
           },
           (error) => {
@@ -132,7 +114,7 @@ export class CustomerEditComponent
     }
   }
 
-  private initForm() {
+  private populateFields() {
     this.customerForm.patchValue({
       id: this.selectedCustomer.id,
       nome: this.selectedCustomer.nome,
@@ -150,6 +132,29 @@ export class CustomerEditComponent
     this.buttonSalvar.nativeElement.disabled = false;
   }
 
+  initializeForm() {
+    this.customerForm = this.formBuilder.group({
+      id: [null],
+      nome: [
+        null,
+        [
+          Validators.required,
+          Validators.minLength(3),
+          Validators.maxLength(35),
+        ],
+      ],
+      email: [null, [Validators.required, Validators.email]],
+      emailConfirmar: [null, [Validators.required]],
+      cep: [null, [Validators.required, Validators.maxLength(15)]],
+      rua: [null, [Validators.required]],
+      numeroEndereco: [null],
+      complemento: [null],
+      bairro: [null, [Validators.required]],
+      siglaEstado: [null, [Validators.required, Validators.maxLength(5)]],
+      cidade: [null, [Validators.required]],
+    });
+  }
+
   onClearForm() {
     this.customerForm.patchValue({
       id: 0,
@@ -164,6 +169,7 @@ export class CustomerEditComponent
       siglaEstado: null,
       cidade: null,
     });
+    this.resetForm.emit();
     this.buttonDeletar.nativeElement.disabled = true;
   }
 }

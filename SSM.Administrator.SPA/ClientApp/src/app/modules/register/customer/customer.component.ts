@@ -1,33 +1,24 @@
-import {
-  Component,
-  EventEmitter,
-  OnInit,
-  Output,
-  ViewChild,
-} from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CustomerService } from '@app/business/services/Customer.service';
-import { ErrorHelper } from '@app/core/helpers';
-import { Destroyer } from '@app/core/super-class';
-import { share, catchError, takeUntil } from 'rxjs/operators';
 import { Observable, empty } from 'rxjs';
 import { TabsetComponent } from 'ngx-bootstrap/tabs';
 import { AccordionPanelComponent } from 'ngx-bootstrap/accordion';
+import { BaseFormComponent } from '../../../shared/form-validation/base-form/base-form.component';
 
 @Component({
   selector: 'app-customer',
   templateUrl: './customer.component.html',
   styleUrls: ['./customer.component.css'],
 })
-export class CustomerComponent extends Destroyer implements OnInit {
+export class CustomerComponent extends BaseFormComponent implements OnInit {
   @ViewChild(TabsetComponent) tabset: TabsetComponent;
   @ViewChild('filtroAccordion') accordionFiltro: AccordionPanelComponent;
   @ViewChild('cadastroAccordion') accordionCadastro: AccordionPanelComponent;
   customer$: Observable<any>;
   customerId: number;
-  searchForm: FormGroup;
   currentSearchForm: any;
   constructor(
     private route: ActivatedRoute,
@@ -40,7 +31,7 @@ export class CustomerComponent extends Destroyer implements OnInit {
   }
 
   ngOnInit(): void {
-    this.searchForm = this.formBuilder.group({
+    this.abstractForm = this.formBuilder.group({
       name: [
         null,
         [
@@ -52,14 +43,11 @@ export class CustomerComponent extends Destroyer implements OnInit {
     });
   }
 
-  onSubmit() {
+  submit() {
     this.tabset.tabs[0].active = true;
-    if (!this.invalidForm()) {
-      this.currentSearchForm = this.searchForm.get('name')?.value;
-      console.log(this.currentSearchForm);
-      this.getCustomer();
-      this.accordionCadastro.isOpen = true;
-    }
+    this.currentSearchForm = this.abstractForm.get('name')?.value;
+    this.getCustomer();
+    this.accordionCadastro.isOpen = true;
   }
 
   onPageChange(config: any) {
@@ -77,10 +65,6 @@ export class CustomerComponent extends Destroyer implements OnInit {
     this.tabset.tabs[1].active = true;
     this.accordionFiltro.isOpen = false;
     this.customerId = id;
-  }
-
-  invalidForm(): boolean {
-    return !(this.searchForm && this.searchForm.valid);
   }
 
   private getCustomer() {

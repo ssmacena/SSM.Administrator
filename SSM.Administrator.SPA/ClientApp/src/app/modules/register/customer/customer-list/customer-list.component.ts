@@ -23,8 +23,8 @@ import { CustomerService } from '@app/business/services/Customer.service';
 export class CustomerListComponent
   extends Destroyer
   implements OnInit, OnChanges {
-  @Output() pageChange: EventEmitter<any> = new EventEmitter<any>();
-  @Output() customerSelected = new EventEmitter<number>();
+  @Output() pageChangedEvent: EventEmitter<any> = new EventEmitter<any>();
+  @Output() customerSelectedEvent = new EventEmitter<number>();
   @Input() data: any;
   @Input() show: boolean;
   @Changes('data') data$; //it listen changes on "@Input() data: any" variable.
@@ -59,10 +59,10 @@ export class CustomerListComponent
     let start =
       this.config.currentPage * this.config.itemsPerPage -
       this.config.itemsPerPage;
-    this.pageChange.emit({ currentPage: currentPage, start: start });
+    this.pageChangedEvent.emit({ currentPage: currentPage, start: start });
   }
 
   onEdit(id: number) {
-    this.customerSelected.emit(id);
+    this.customerSelectedEvent.emit(id);
   }
 }
