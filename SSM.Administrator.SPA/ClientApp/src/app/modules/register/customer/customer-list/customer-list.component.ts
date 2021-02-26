@@ -13,7 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Destroyer } from '@app/core/super-class';
 import { takeUntil } from 'rxjs/operators';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CustomerService } from '@app/business/services/Customer.service';
+import { CustomerService } from '@app/business/services/customer.service';
 
 @Component({
   selector: 'app-customer-list',

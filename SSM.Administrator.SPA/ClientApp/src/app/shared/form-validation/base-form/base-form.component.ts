@@ -35,10 +35,6 @@ export abstract class BaseFormComponent implements OnInit {
     });
   }
 
-  resetar() {
-    this.abstractForm.reset();
-  }
-
   checkValidTouched(key: string) {
     const abstractControl = this.abstractForm.controls[key];
     if (abstractControl instanceof FormGroup) {

@@ -10,12 +10,22 @@ import {
 } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Customer } from '@app/business/models';
-import { CustomerService } from '@app/business/services/Customer.service';
+import { CustomerService } from '@app/business/services/customer.service';
 import { ErrorHelper } from '@app/core/helpers';
+import { AlertModalService } from '@app/core/services/alert-modal.service';
 import { Destroyer } from '@app/core/super-class';
+import { BaseFormComponent } from '@app/shared/form-validation/base-form/base-form.component';
 import { ToastrService } from 'ngx-toastr';
-import { empty, Observable } from 'rxjs';
-import { catchError, map, share, takeUntil, first } from 'rxjs/operators';
+import { EMPTY, Observable, Subscription } from 'rxjs';
+import {
+  catchError,
+  map,
+  share,
+  takeUntil,
+  first,
+  take,
+  switchMap,
+} from 'rxjs/operators';
 
 @Component({
   selector: 'app-customer-edit',
@@ -23,21 +33,21 @@ import { catchError, map, share, takeUntil, first } from 'rxjs/operators';
   styleUrls: ['./customer-edit.component.css'],
 })
 export class CustomerEditComponent
-  extends Destroyer
+  extends BaseFormComponent
   implements OnInit, OnChanges {
   @Output() customersChangedEvent = new EventEmitter<void>();
   @Output() resetFormEvent = new EventEmitter<void>();
   @Input() idCustomer: number = 0;
   @ViewChild('deletarButton') buttonDeletar;
   @ViewChild('salvarButton') buttonSalvar;
-  editMode = false;
-  customerForm: FormGroup;
+  subscription: Subscription;
   selectedCustomer: Customer;
   customer$: Observable<any>;
   constructor(
     private formBuilder: FormBuilder,
     private customerService: CustomerService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private alertService: AlertModalService
   ) {
     super();
   }
@@ -57,65 +67,67 @@ export class CustomerEditComponent
   }
 
   getCustomerById() {
-    this.customerService.getCustomerById(this.idCustomer).subscribe(
-      (responseData) => {
-        this.selectedCustomer = responseData;
-        this.populateFields();
-        return responseData;
-      },
-      (error) => {
-        this.toastr.error(error.message, ErrorHelper.raiseDefaultErrorTitle);
-      }
-    );
+    this.subscription = this.customerService
+      .getCustomerById(this.idCustomer)
+      .subscribe(
+        (responseData) => {
+          this.selectedCustomer = responseData;
+          this.populateFields();
+          return responseData;
+        },
+        (error) => {
+          this.toastr.error(error.message, ErrorHelper.raiseDefaultErrorTitle);
+        }
+      );
   }
 
-  onSaveCustomer() {
-    if (this.customerForm.valid) {
-      this.customerService
-        .saveCustomer(this.customerForm.value)
-        .pipe(takeUntil(this.destroy$))
-        .subscribe(
-          (responseData) => {
-            this.customersChangedEvent.emit();
-            this.toastr.success(
-              'Registro do cliente salvo com sucesso!',
-              'Cliente'
-            );
-            return responseData;
-          },
-          (error) => {
-            this.toastr.error(
-              error.message,
-              ErrorHelper.raiseDefaultErrorTitle
-            );
-          }
-        );
+  submit() {
+    if (this.abstractForm.valid) {
+      this.customerService.saveCustomer(this.abstractForm.value).subscribe(
+        (responseData) => {
+          this.customersChangedEvent.emit();
+          this.toastr.success(
+            'Registro do cliente salvo com sucesso!',
+            'Cliente'
+          );
+          return responseData;
+        },
+        (error) => {
+          this.toastr.error(error.message, ErrorHelper.raiseDefaultErrorTitle);
+        }
+      );
     }
   }
 
   onDeleteCustomer() {
-    if (confirm('Tem certeza que deseja excluir este cliente?')) {
-      this.customerService
-        .deleteCustomer(this.selectedCustomer.id)
-        .pipe(takeUntil(this.destroy$))
-        .subscribe(
-          (success) => {
-            this.onClearForm();
-            this.customersChangedEvent.emit();
-            this.toastr.success('Registro deletado com sucesso!', 'Cliente');
-          },
-          (error) => {
-            this.toastr.error(
-              error.message,
-              ErrorHelper.raiseDefaultErrorTitle
-            );
-          }
-        );
-    }
+    const result$ = this.alertService.showConfirm(
+      'Confirmação',
+      'Tem certeza que deseja excluir este cliente?'
+    );
+    result$
+      .asObservable()
+      .pipe(
+        take(1),
+        switchMap((result) =>
+          result
+            ? this.customerService.deleteCustomer(this.selectedCustomer.id)
+            : EMPTY
+        )
+      )
+      .subscribe(
+        (success) => {
+          this.onClearForm();
+          this.customersChangedEvent.emit();
+          this.toastr.success('Registro deletado com sucesso!', 'Cliente');
+        },
+        (error) => {
+          this.toastr.error(error.message, ErrorHelper.raiseDefaultErrorTitle);
+        }
+      );
   }
 
   private populateFields() {
-    this.customerForm.patchValue({
+    this.abstractForm.patchValue({
       id: this.selectedCustomer.id,
       nome: this.selectedCustomer.nome,
       email: this.selectedCustomer.email,
@@ -133,7 +145,7 @@ export class CustomerEditComponent
   }
 
   initializeForm() {
-    this.customerForm = this.formBuilder.group({
+    this.abstractForm = this.formBuilder.group({
       id: [null],
       nome: [
         null,
@@ -156,7 +168,7 @@ export class CustomerEditComponent
   }
 
   onClearForm() {
-    this.customerForm.patchValue({
+    this.abstractForm.patchValue({
       id: 0,
       nome: null,
       email: null,
@@ -169,7 +181,13 @@ export class CustomerEditComponent
       siglaEstado: null,
       cidade: null,
     });
-    this.resetForm.emit();
+    this.resetFormEvent.emit();
     this.buttonDeletar.nativeElement.disabled = true;
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }

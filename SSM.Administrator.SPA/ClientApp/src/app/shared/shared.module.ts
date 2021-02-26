@@ -8,12 +8,16 @@ import { ErrorMsgComponent } from './form-validation/error-msg/error-msg.compone
 import { InputFieldComponent } from './form-validation/input-field/input-field.component';
 import { BaseFormComponent } from './form-validation/base-form/base-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AlertModalComponent } from './alert-modal/alert-modal.component';
+import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';
 
 @NgModule({
   declarations: [
     CampoControlErroComponent,
     ErrorMsgComponent,
     InputFieldComponent,
+    AlertModalComponent,
+    ConfirmModalComponent,
   ],
   imports: [
     CommonModule,
@@ -31,5 +35,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     InputFieldComponent,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  entryComponents: [AlertModalComponent, ConfirmModalComponent],
 })
 export class SharedModule {}

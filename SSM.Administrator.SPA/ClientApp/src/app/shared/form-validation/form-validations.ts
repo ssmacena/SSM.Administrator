@@ -18,7 +18,7 @@ export class FormValidations {
     return validator;
   }
 
-  static cepValidator(control: FormControl) {
+  static checkIfCepIsValid(control: FormControl) {
     const cep = control.value;
     if (cep && cep !== '') {
       const validacep = /^[0-9]{8}$/;

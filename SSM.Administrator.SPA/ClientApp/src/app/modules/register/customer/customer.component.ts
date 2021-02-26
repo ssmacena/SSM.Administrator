@@ -2,11 +2,12 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { CustomerService } from '@app/business/services/Customer.service';
-import { Observable, empty } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { TabsetComponent } from 'ngx-bootstrap/tabs';
 import { AccordionPanelComponent } from 'ngx-bootstrap/accordion';
 import { BaseFormComponent } from '../../../shared/form-validation/base-form/base-form.component';
+import { Customer } from '@app/business/models';
+import { CustomerService } from '@app/business/services/customer.service';
 
 @Component({
   selector: 'app-customer',
@@ -17,6 +18,7 @@ export class CustomerComponent extends BaseFormComponent implements OnInit {
   @ViewChild(TabsetComponent) tabset: TabsetComponent;
   @ViewChild('filtroAccordion') accordionFiltro: AccordionPanelComponent;
   @ViewChild('cadastroAccordion') accordionCadastro: AccordionPanelComponent;
+  subscription: Subscription;
   customer$: Observable<any>;
   customerId: number;
   currentSearchForm: any;
@@ -68,8 +70,14 @@ export class CustomerComponent extends BaseFormComponent implements OnInit {
   }
 
   private getCustomer() {
-    this.customerService
+    this.subscription = this.customerService
       .getCustomer(this.currentSearchForm)
       .subscribe((dados) => (this.customer$ = dados));
+  }
+
+  ngOnDestroy() {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 }

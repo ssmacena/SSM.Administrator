@@ -62,7 +62,7 @@ import { RegisterModule } from './modules/register/register.module';
     RegisterModule,
 
     // app
-    AppRoutingModule,
+    AppRoutingModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
