@@ -1,26 +1,36 @@
+<div class="row pt-1 mb-2">
+  <div class="col-md-3 text-center mb-2">
+    <h1 class="h5">
+    </h1>
+  </div>
+  <div class="col-md-3 text-center text-danger">
+    <h2 class="h5">
+    </h2>
+  </div>
+  <div class="col-md-3 text-center text-primary">
+    <h2 class="h5">
+    </h2>
+  </div>
+  <div class="col-md-3 text-center text-warning">
+    <h2 class="h5">
+    </h2>
+  </div>
+</div>
+<hr>
+<!-- https://stackoverflow.com/questions/206652/how-to-create-div-to-fill-all-space-between-header-and-footer-div -->
+<!-- https://jsfiddle.net/osvx1zoo/3/ -->
 <div class="row" id="content-main">
-  <div>
-    <app-breadcrumb></app-breadcrumb>
-    <div class="row" id="content-main">
-      <accordion [isAnimated]="true" style="width:1000px; overflow:hidden;">
+  <app-breadcrumb></app-breadcrumb>
+  <div class="col-xs-12 col-sm-6 col-md-12">
+    <!-- <router-outlet></router-outlet> -->
+    <nav class="primary-nav" role="navigation">
+      <accordion [isAnimated]="true">
         <accordion-group #filtroAccordion heading=".:Filtro">
           <form [formGroup]="abstractForm" (ngSubmit)="onSubmit()">
-            <div class="row">
-              <div class="col-6 align-baseline">
-                <!-- <label for="name">Name</label>
-                <input type="text" id="name" formControlName="name" class="form-control form-control-sm"> -->
-
-                <app-input-field class="col-sm-12 form-group text-top" formControlName="name"
-                [classeCss]="aplicaCssErro('name')"
-                id="name" label="Nome" [control]="abstractForm.get('name')">
-                </app-input-field>
-
-              </div>
-              <div class="col-6">
-                <button type="submit" class="btn btn-secondary btn-sm">Procurar</button>
-                <!-- <button type="button" class="btn btn-danger btn-sm" (click)="onCancel()">Cancel</button> -->
-              </div>
-            </div>
+            <app-input-field class="form-group" formControlName="name"
+              [classeCss]="aplicaCssErro('name')" id="name" label="Nome" [control]="abstractForm.get('name')">
+            </app-input-field>
+            <button type="submit" class="btn btn-secondary btn-sm">Procurar</button>
           </form>
         </accordion-group>
         <accordion-group #cadastroAccordion heading=".:Cadastro">
@@ -45,6 +55,6 @@
           </tabset>
         </accordion-group>
       </accordion>
-    </div>
+    </nav>
   </div>
 </div>
