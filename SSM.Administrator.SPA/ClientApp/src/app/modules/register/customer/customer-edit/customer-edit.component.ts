@@ -13,7 +13,7 @@ import { Customer } from '@app/business/models';
 import { CustomerService } from '@app/business/services/customer.service';
 import { ErrorHelper } from '@app/core/helpers';
 import { AlertModalService } from '@app/core/services/alert-modal.service';
-import { Destroyer } from '@app/core/super-class';
+
 import { BaseFormComponent } from '@app/shared/form-validation/base-form/base-form.component';
 import { ToastrService } from 'ngx-toastr';
 import { EMPTY, Observable, Subscription } from 'rxjs';
@@ -62,40 +62,27 @@ export class CustomerEditComponent
     if (!change.firstChange && change.currentValue != 0) this.getCustomerById();
   }
 
-  onEdit(id: number) {
-    console.log('receive' + id);
-  }
-
-  getCustomerById() {
-    this.subscription = this.customerService
-      .getCustomerById(this.idCustomer)
-      .subscribe(
-        (responseData) => {
-          this.selectedCustomer = responseData;
-          this.populateFields();
-          return responseData;
-        },
-        (error) => {
-          this.toastr.error(error.message, ErrorHelper.raiseDefaultErrorTitle);
-        }
-      );
-  }
-
   submit() {
     if (this.abstractForm.valid) {
-      this.customerService.saveCustomer(this.abstractForm.value).subscribe(
-        (responseData) => {
-          this.customersChangedEvent.emit();
-          this.toastr.success(
-            'Registro do cliente salvo com sucesso!',
-            'Cliente'
-          );
-          return responseData;
-        },
-        (error) => {
-          this.toastr.error(error.message, ErrorHelper.raiseDefaultErrorTitle);
-        }
-      );
+      this.customerService
+        .saveCustomer(this.abstractForm.value)
+        .pipe(takeUntil(this.destroy$))
+        .subscribe(
+          (responseData) => {
+            this.customersChangedEvent.emit();
+            this.toastr.success(
+              'Registro do cliente salvo com sucesso!',
+              'Cliente'
+            );
+            return responseData;
+          },
+          (error) => {
+            this.toastr.error(
+              error.message,
+              ErrorHelper.raiseDefaultErrorTitle
+            );
+          }
+        );
     }
   }
 
@@ -106,6 +93,7 @@ export class CustomerEditComponent
     );
     result$
       .asObservable()
+      .pipe(takeUntil(this.destroy$))
       .pipe(
         take(1),
         switchMap((result) =>
@@ -119,6 +107,40 @@ export class CustomerEditComponent
           this.onClearForm();
           this.customersChangedEvent.emit();
           this.toastr.success('Registro deletado com sucesso!', 'Cliente');
+        },
+        (error) => {
+          this.toastr.error(error.message, ErrorHelper.raiseDefaultErrorTitle);
+        }
+      );
+  }
+
+  onClearForm() {
+    this.abstractForm.patchValue({
+      id: 0,
+      nome: null,
+      email: null,
+      emailConfirmar: null,
+      cep: null,
+      numeroEndereco: null,
+      complemento: null,
+      rua: null,
+      bairro: null,
+      siglaEstado: null,
+      cidade: null,
+    });
+    this.resetFormEvent.emit();
+    this.buttonDeletar.nativeElement.disabled = true;
+  }
+
+  private getCustomerById() {
+    this.subscription = this.customerService
+      .getCustomerById(this.idCustomer)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(
+        (responseData) => {
+          this.selectedCustomer = responseData;
+          this.populateFields();
+          return responseData;
         },
         (error) => {
           this.toastr.error(error.message, ErrorHelper.raiseDefaultErrorTitle);
@@ -144,7 +166,7 @@ export class CustomerEditComponent
     this.buttonSalvar.nativeElement.disabled = false;
   }
 
-  initializeForm() {
+  private initializeForm() {
     this.abstractForm = this.formBuilder.group({
       id: [null],
       nome: [
@@ -165,29 +187,5 @@ export class CustomerEditComponent
       siglaEstado: [null, [Validators.required, Validators.maxLength(5)]],
       cidade: [null, [Validators.required]],
     });
-  }
-
-  onClearForm() {
-    this.abstractForm.patchValue({
-      id: 0,
-      nome: null,
-      email: null,
-      emailConfirmar: null,
-      cep: null,
-      numeroEndereco: null,
-      complemento: null,
-      rua: null,
-      bairro: null,
-      siglaEstado: null,
-      cidade: null,
-    });
-    this.resetFormEvent.emit();
-    this.buttonDeletar.nativeElement.disabled = true;
-  }
-
-  ngOnDestroy() {
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
   }
 }

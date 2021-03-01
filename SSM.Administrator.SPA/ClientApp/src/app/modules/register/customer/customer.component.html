@@ -26,11 +26,12 @@
     <nav class="primary-nav" role="navigation">
       <accordion [isAnimated]="true">
         <accordion-group #filtroAccordion heading=".:Filtro">
-          <form [formGroup]="abstractForm" (ngSubmit)="onSubmit()">
-            <app-input-field class="form-group" formControlName="name"
-              [classeCss]="aplicaCssErro('name')" id="name" label="Nome" [control]="abstractForm.get('name')">
-            </app-input-field>
-            <button type="submit" class="btn btn-secondary btn-sm">Procurar</button>
+          <form [formGroup]="abstractForm" (ngSubmit)="onSubmit()" class="form-inline">
+            <div class="form-group col-auto">
+              <label for="inputNome" class="form-label mb-2 mr-sm-2 mb-sm-0">Nome</label>
+              <input type="text" class="form-control form-control-sm" id="inputNome" formControlName="name">
+            </div>
+            <button type="submit" class="btn btn-secondary btn-sm col-auto">Procurar</button>
           </form>
         </accordion-group>
         <accordion-group #cadastroAccordion heading=".:Cadastro">

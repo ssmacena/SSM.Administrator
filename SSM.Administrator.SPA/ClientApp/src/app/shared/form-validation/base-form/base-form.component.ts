@@ -1,11 +1,14 @@
 import { Component, OnInit, Directive } from '@angular/core';
 import { FormArray, FormGroup } from '@angular/forms';
+import { Destroyer } from '@app/core/super-class';
 
 @Directive()
-export abstract class BaseFormComponent implements OnInit {
+export abstract class BaseFormComponent extends Destroyer implements OnInit {
   abstractForm: FormGroup;
 
-  constructor() {}
+  constructor() {
+    super();
+  }
 
   ngOnInit() {}
 
