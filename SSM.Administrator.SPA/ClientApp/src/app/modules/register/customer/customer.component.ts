@@ -22,6 +22,7 @@ export class CustomerComponent extends BaseFormComponent implements OnInit {
   customer$: Observable<any>;
   customerId: number;
   currentSearchForm: any;
+  isFirstOpen = true;
   constructor(
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
@@ -35,7 +36,7 @@ export class CustomerComponent extends BaseFormComponent implements OnInit {
   ngOnInit(): void {
     this.abstractForm = this.formBuilder.group({
       name: [
-        null,
+        '',
         [
           Validators.required,
           Validators.minLength(3),
@@ -43,6 +44,10 @@ export class CustomerComponent extends BaseFormComponent implements OnInit {
         ],
       ],
     });
+  }
+
+  get name(): any {
+    return this.abstractForm.get('name');
   }
 
   submit() {

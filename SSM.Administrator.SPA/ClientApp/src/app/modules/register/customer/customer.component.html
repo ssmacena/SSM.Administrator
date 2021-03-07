@@ -25,13 +25,21 @@
     <!-- <router-outlet></router-outlet> -->
     <nav class="primary-nav" role="navigation">
       <accordion [isAnimated]="true">
-        <accordion-group #filtroAccordion heading=".:Filtro">
+        <accordion-group #filtroAccordion heading=".:Filtro" [isOpen]="isFirstOpen">
           <form [formGroup]="abstractForm" (ngSubmit)="onSubmit()" class="form-inline">
-            <div class="form-group col-auto">
+            <div class="form-group col-auto" [ngClass]="aplicaCssErro('name')">
               <label for="inputNome" class="form-label mb-2 mr-sm-2 mb-sm-0">Nome</label>
               <input type="text" class="form-control form-control-sm" id="inputNome" formControlName="name">
             </div>
-            <button type="submit" class="btn btn-secondary btn-sm col-auto">Procurar</button>
+            <button type="submit" class="btn btn-secondary btn-sm  mb-2 mr-sm-2 mb-sm-0">Procurar</button>
+            <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert alert-danger mb-sm-0 mt-sm-0" role="alert">
+              <div *ngIf="name.errors.required">
+                Nome é obrigatório.
+              </div>
+              <div *ngIf="name.errors.minlength">
+                Nome precisa ter no mínimo 3 caracteres.
+              </div>
+            </div>
           </form>
         </accordion-group>
         <accordion-group #cadastroAccordion heading=".:Cadastro">

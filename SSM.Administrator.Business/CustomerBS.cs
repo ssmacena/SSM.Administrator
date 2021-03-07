@@ -24,7 +24,7 @@ namespace SSM.Administrator.Business
 
         public List<Clientes> GetAll()
         {
-            List<Clientes> customer = _dbContext.SJSS_Customer.OrderBy(item => item.Nome).ToList(); ;
+            List<Clientes> customer = _dbContext.SJSS_Customer.OrderBy(item => item.Nome).ToList();
             return customer;
         }
 

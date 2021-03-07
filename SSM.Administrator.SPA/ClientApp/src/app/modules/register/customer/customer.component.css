@@ -1,0 +1,9 @@
+:host ::ng-deep div.panel-heading.card-header.panel-enabled {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.alert {
+  padding-top: 0.15rem;
+  padding-bottom: 0.15rem;
+}

@@ -6,7 +6,6 @@ import { LayoutModule } from './layout/layout.module';
 import { CampoControlErroComponent } from './form-validation/campo-control-erro/campo-control-erro.component';
 import { ErrorMsgComponent } from './form-validation/error-msg/error-msg.component';
 import { InputFieldComponent } from './form-validation/input-field/input-field.component';
-import { BaseFormComponent } from './form-validation/base-form/base-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertModalComponent } from './alert-modal/alert-modal.component';
 import { ConfirmModalComponent } from './confirm-modal/confirm-modal.component';

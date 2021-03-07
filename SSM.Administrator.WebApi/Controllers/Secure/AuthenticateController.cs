@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using SSM.Administrator.WebApi.Core.Base;
 using SSM.Administrator.WebApi.Core.Context;
@@ -8,6 +9,7 @@ using SSM.Administrator.WebApi.Core.Models;
 using SSM.Administrator.WebApi.Core.Models.Business;
 using SSM.Administrator.WebApi.Core.Services;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace SSM.Administrator.WebApi.Controllers.Secure
@@ -35,6 +37,24 @@ namespace SSM.Administrator.WebApi.Controllers.Secure
         //{
         //    _contextFactory = contextFactory;           
         //}
+        [HttpGet]
+        public IActionResult GetUsers()
+        {
+            IActionResult response = BadRequest();
+
+            try
+            {
+                var result = _userManager.Users.ToList();
+                
+                response = Ok(result);
+            }
+            catch (Exception ex)
+            {
+                response = BadRequest(ex.Message);
+            }
+
+            return response;
+        }
 
         [HttpPost]
         [Route("login")]
@@ -47,7 +67,6 @@ namespace SSM.Administrator.WebApi.Controllers.Secure
             //    //businessController.Dispose();
             //    return result;
             //});
-
             var user = await _userManager.FindByEmailAsync(model.Username);
 
             //await _userManager.AddToRoleAsync(user, "Admin");

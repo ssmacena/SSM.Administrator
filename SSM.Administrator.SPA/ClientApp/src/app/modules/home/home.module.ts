@@ -1,16 +1,15 @@
-import { AppModule } from './../../app.module';
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { ModalModule, ModalDirective, BsModalRef } from 'ngx-bootstrap/modal';
+import { ModalModule, BsModalRef } from 'ngx-bootstrap/modal';
 //// 3rd party
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 // core & shared
 import { SharedModule } from '@app/shared';
-import { SecurityInfoComponent, HelpFaqComponent, LinksComponent } from '.';
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home.routing';
 import { LoginModalComponent } from './pages/auth/login-modal/login-modal.component';
+import { SecurityInfoComponent, HelpFaqComponent, LinksComponent } from '.';
 
 @NgModule({
   declarations: [

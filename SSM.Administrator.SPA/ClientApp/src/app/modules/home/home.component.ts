@@ -8,6 +8,13 @@ import { appConfig } from '@app/app-config';
 import { Destroyer } from '@app/core/super-class';
 import { AuthenticationService } from '@app/business/services';
 import { ToastrService } from 'ngx-toastr';
+import { Observable } from 'rxjs';
+
+export interface AuthResponseData {
+  email: string;
+  token: string;
+  expiresIn: string;
+}
 
 @Component({
   selector: 'app-home',
@@ -37,7 +44,20 @@ export class HomeComponent extends Destroyer implements OnInit {
   ngOnInit() {
     // get return url from route parameters or default to '/'
     //this.returnUrl = this.route.snapshot.paramMap.get('returnUrl')!;
-    this.openModalWithComponent();
+    //this.openModalWithComponent();
+
+    let authObs: Observable<AuthResponseData>;
+
+    authObs = this.auth.login('silviomacena@gmail.com', '4ej@Fp#i');
+
+    authObs.subscribe(
+      (resData) => {
+        console.log(resData);
+      },
+      (errorMessage) => {
+        console.log(errorMessage);
+      }
+    );
   }
 
   login() {

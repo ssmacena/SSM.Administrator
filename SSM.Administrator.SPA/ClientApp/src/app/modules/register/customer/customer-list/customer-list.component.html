@@ -18,7 +18,7 @@
                               <td class="align-middle text-sm-left text-nowrap" scope="row">{{customer.nome}}</td>
                               <td class="align-middle text-sm-left" scope="row">{{customer.email}}</td>
                               <td class="align-middle text-sm-left" scope="row">{{customer.siglaEstado}}</td>
-                              <th class="align-middle" scope="row">{{customer.dataCriacao | date: 'dd/MM/yyyy'}}</th>
+                              <th class="align-middle text-sm-center" scope="row" scope="row">{{customer.dataCriacao | date: 'dd/MM/yyyy'}}</th>
                               <td>
                                 <span class="float-right">
                                   <button class="btn btn-outline-warning mb-1 btn-sm" (click)="onEdit(customer.id)">
