@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SSM.Administrator.Entity;
@@ -18,9 +19,9 @@ namespace SSM.Administrator.WebApi.Controllers
 
         //https://stackoverflow.com/questions/41058142/injecting-dbcontext-into-service-layer
 
-        public CustomerController(IHttpContextAccessor httpContextAccessor)
+        public CustomerController(IHttpContextAccessor httpContextAccessor, IMapper mapper)
         {
-            this.service = new CustomerService(httpContextAccessor.HttpContext);
+            this.service = new CustomerService(httpContextAccessor.HttpContext, mapper);
         }
 
         //private readonly ILogger<CustomerController> _logger;

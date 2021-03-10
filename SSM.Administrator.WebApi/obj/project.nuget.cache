@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "O98UB8qBFiVvSOkRIrkUj23JV/nSSem1U91hcme5gLPzT4K0nmOpPa4ogfMq3TLt+DAMAwPXeZkXm8DiGW/I6A==",
+  "dgSpecHash": "1FgH8RskG4MZx2iYRWSDa/awZcv5wIWAV6DtHZtKq5yCDajj2ub+Fs6Q74euZbzQaLrpQdLGrWgx91OcPKwoVg==",
   "success": true,
   "projectFilePath": "D:\\SourceGit\\SSM.Administrator\\SSM.Administrator.WebApi\\SSM.Administrator.WebApi.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Silvio\\.nuget\\packages\\automapper\\10.0.0\\automapper.10.0.0.nupkg.sha512",
+    "C:\\Users\\Silvio\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
+    "C:\\Users\\Silvio\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.1\\automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
     "C:\\Users\\Silvio\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Silvio\\.nuget\\packages\\identitymodel\\4.4.0\\identitymodel.4.4.0.nupkg.sha512",
     "C:\\Users\\Silvio\\.nuget\\packages\\identityserver4\\4.1.0\\identityserver4.4.1.0.nupkg.sha512",

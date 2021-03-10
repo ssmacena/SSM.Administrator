@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 
 namespace SSM.Administrator.WebApi.Core.Helpers
 {
-    public class CookieHelper
+    public static class CookieHelper
     {
+
     }
 }

@@ -51,6 +51,7 @@ namespace SSM.Administrator.Business
                 {
                     customer.DataCriacao = DateTime.Now;
                     customer.IdUserCriacao = CurrentUserId;
+                    _dbContext.Entry(customer).State = EntityState.Added;
                     _dbContext.SJSS_Customer.Add(customer);
                     _dbContext.SaveChanges();
                 }

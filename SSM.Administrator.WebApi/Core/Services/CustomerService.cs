@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using SSM.Administrator.Business;
 using SSM.Administrator.Entity;
 using SSM.Administrator.WebApi.Core.Base;
@@ -8,7 +9,7 @@ namespace SSM.Administrator.WebApi.Core.Services
 {
     public class CustomerService : BaseService
     {
-        public CustomerService(HttpContext httpContext) : base(httpContext) { }
+        public CustomerService(HttpContext httpContext, IMapper mapper) : base(httpContext, mapper) { }
 
         public Clientes GetByIdCustomer(int idCustomer)
         {
@@ -23,7 +24,7 @@ namespace SSM.Administrator.WebApi.Core.Services
         public List<Clientes> GetAll()
         {
             List<Clientes> customer = null;
-
+            
             var businessController = CreateBusiness<CustomerBS>();
             customer = businessController.GetAll();
 

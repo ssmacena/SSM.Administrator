@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using SSM.Administrator.Business.Global;
 using SSM.Administrator.Data;
 using System;
@@ -11,12 +12,14 @@ namespace SSM.Administrator.WebApi.Core.Base
     public class BaseService
     {
         private readonly HttpContext _httpContext;
+        protected IMapper mapper;
         private readonly DataContextSet _dbContext;
         protected String CurrentUserId { get; set; }
         protected List<String> CurrentUserPermissions { get; private set; }
-        public BaseService(HttpContext httpContext)
+        public BaseService(HttpContext httpContext, IMapper mapper)
         {
             _httpContext = httpContext;
+            this.mapper = mapper;
             _dbContext = (DataContextSet)httpContext.RequestServices.GetService(typeof(DataContextSet));
             LoadPermissions();
         }

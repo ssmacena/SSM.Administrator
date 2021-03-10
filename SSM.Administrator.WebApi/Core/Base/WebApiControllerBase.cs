@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
@@ -14,7 +15,7 @@ namespace SSM.Administrator.WebApi.Core.Base
     public abstract class WebApiControllerBase : ControllerBase
     {
         public WebApiControllerBase() : base() { }
-
+        protected readonly IMapper mapper;
         public IActionResult Execute<T>(Func<T> action)
         {
             IActionResult response;

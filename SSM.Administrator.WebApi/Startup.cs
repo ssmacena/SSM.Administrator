@@ -1,3 +1,4 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -13,6 +14,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using SSM.Administrator.Data;
 using SSM.Administrator.WebApi.Core.Context;
+using SSM.Administrator.WebApi.Core.Mapping;
 using System;
 using System.Text;
 using System.Threading.Tasks;
@@ -53,7 +55,11 @@ namespace SSM.Administrator.WebApi
             services.AddScoped<ApplicationDbContext, ApplicationDbContext>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            //services.AddAutoMapper();
+            services.AddSingleton(ctx => new MapperConfiguration(cfg =>
+            {
+                cfg.AddProfile(new AutoMapperProfile());
+            }).CreateMapper());
+
             //services.AddDbContextFactory<ApplicationDbContext>(
             //    options =>
             //        options.UseSqlServer(Configuration.GetConnectionString("ConnStr")));

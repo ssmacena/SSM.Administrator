@@ -80,3 +80,4 @@ D:\SourceGit\SSM.Administrator\SSM.Administrator.WebApi\obj\Debug\net5.0\SSM.Adm
 D:\SourceGit\SSM.Administrator\SSM.Administrator.WebApi\obj\Debug\net5.0\ref\SSM.Administrator.WebApi.dll
 D:\SourceGit\SSM.Administrator\SSM.Administrator.WebApi\obj\Debug\net5.0\SSM.Administrator.WebApi.pdb
 D:\SourceGit\SSM.Administrator\SSM.Administrator.WebApi\obj\Debug\net5.0\SSM.Administrator.WebApi.genruntimeconfig.cache
+D:\SourceGit\SSM.Administrator\SSM.Administrator.WebApi\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
