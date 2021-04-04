@@ -3,8 +3,10 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SSM.Administrator.Entity;
+using SSM.Administrator.Entity.Enumeration;
 using SSM.Administrator.WebApi.Core.Base;
 using SSM.Administrator.WebApi.Core.Services;
+using SSM.Administrator.WebApi.Core.Support.Filters;
 using System;
 using System.Threading.Tasks;
 
@@ -55,6 +57,7 @@ namespace SSM.Administrator.WebApi.Controllers
         }
 
         [HttpGet]
+        [HasPermission(Permission.AccessAll)]
         public IActionResult Get()
         {
             IActionResult response = BadRequest();
@@ -77,6 +80,8 @@ namespace SSM.Administrator.WebApi.Controllers
         //POST: customer/save-entity
         [Route("save-entity")]
         [HttpPost]
+        [ValidateAntiForgeryToken]
+        //[HasPermission(Permission.AccessAll)]
         public async Task<IActionResult> Save([FromBody] Clientes model)
         {
             IActionResult response = BadRequest();

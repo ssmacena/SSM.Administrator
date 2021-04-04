@@ -9,6 +9,7 @@ import { Destroyer } from '@app/core/super-class';
 import { AuthenticationService } from '@app/business/services';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
+import { AntiforgeryTokenService } from '@app/core/services';
 
 export interface AuthResponseData {
   email: string;
@@ -35,7 +36,8 @@ export class HomeComponent extends Destroyer implements OnInit {
     private router: Router,
     private toastr: ToastrService,
     private formBuilder: FormBuilder,
-    public auth: AuthenticationService
+    public auth: AuthenticationService,
+    private antiforgery: AntiforgeryTokenService
   ) {
     super();
     this.loginForm = this.formBuilder.group({});
@@ -47,9 +49,7 @@ export class HomeComponent extends Destroyer implements OnInit {
     //this.openModalWithComponent();
 
     let authObs: Observable<AuthResponseData>;
-
     authObs = this.auth.login('silviomacena@gmail.com', '4ej@Fp#i');
-
     authObs.subscribe(
       (resData) => {
         console.log(resData);
@@ -58,6 +58,7 @@ export class HomeComponent extends Destroyer implements OnInit {
         console.log(errorMessage);
       }
     );
+    let antiforgery$ = this.antiforgery.generate().subscribe();
   }
 
   login() {

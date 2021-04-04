@@ -51,7 +51,6 @@ export class AuthenticationService {
   }
 
   login(email: string, password: string) {
-    let antiforgery$ = this.antiforgery.generate();
     //"http://localhost:59922/secure/user/login"
     console.log(ApiRouteHelper.secureRoute('user/login'));
     return this.http
@@ -65,7 +64,7 @@ export class AuthenticationService {
           this.handleAuthentication(email, resData.token, +resData.expiresIn);
         })
       );
-
+    //let antiforgery$ = this.antiforgery.generate();
     // let maintenance$ = this.maintenance();
     // let authenticate$ = this.authenticate();
 

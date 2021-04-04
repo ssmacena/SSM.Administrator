@@ -32,19 +32,19 @@ export class JwtInterceptor implements HttpInterceptor {
     if (userData) {
       request = request.clone({
         setHeaders: {
-          Authorization: `Bearer ${userData._token}`,
+          Authorization: `Bearer ${userData._token}`
         },
       });
     }
 
     // add X-XSRF-Token -> Anti forgery validation
-    let antiForgeryToken = this.antiforgery.antiforgeryKeyToken || '';
+    // let antiForgeryToken = this.antiforgery.antiforgeryKeyToken || '';
 
-    request = request.clone({
-      setHeaders: {
-        'X-XSRF-Token': antiForgeryToken,
-      },
-    });
+    // request = request.clone({
+    //   setHeaders: {
+    //     'X-XSRF-TOKEN': antiForgeryToken,
+    //   },
+    // });
 
     return next.handle(request);
   }

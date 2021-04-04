@@ -28,4 +28,12 @@ export class UserService {
   public getUserPreference(key: string): any {
     return this.auth.user.preferences.find((e) => e.key == key);
   }
+
+  // deleteUserById(id:number){
+  //   return this.http.delete(`${this.baseUrl}/DeleteUser/${id}`, this.httpOptions);
+  // }
+
+  // getUsers(): Observable<UserModel[]> {
+  //   return this.http.get<UserModel[]>(`${this.baseUrl}/GetUsers`, this.httpOptions)
+  // }
 }

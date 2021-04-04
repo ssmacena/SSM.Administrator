@@ -6,6 +6,7 @@ namespace SSM.Administrator.WebApi.Controllers
     public class InitController : Controller
     {
         [HttpPost]
+        [IgnoreAntiforgeryToken]
         public IActionResult Index()
         {
             return Ok(true);

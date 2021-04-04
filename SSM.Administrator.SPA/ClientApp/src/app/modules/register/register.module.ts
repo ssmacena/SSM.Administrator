@@ -17,12 +17,14 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { SharedModule } from '@app/shared';
 import { CustomerListComponent } from './customer/customer-list/customer-list.component';
 import { CustomerEditComponent } from './customer/customer-edit/customer-edit.component';
+import { ManageUsersComponent } from './manage-users/manage-users.component';
 
 @NgModule({
   declarations: [
     CustomerComponent,
     CustomerListComponent,
     CustomerEditComponent,
+    ManageUsersComponent,
   ],
   imports: [
     CommonModule,

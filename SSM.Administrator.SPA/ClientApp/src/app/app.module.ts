@@ -1,9 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
-import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+import {
+  NgModule,
+  CUSTOM_ELEMENTS_SCHEMA,
+  InjectionToken,
+} from '@angular/core';
+import {
+  HttpClientModule,
+  HttpClientXsrfModule,
+  HTTP_INTERCEPTORS,
+} from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LOCALE_ID } from '@angular/core';
 import { registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
@@ -29,6 +37,8 @@ import {
 // features
 import { HomeModule } from './modules/home/home.module';
 import { RegisterModule } from './modules/register/register.module';
+import { HttpXSRFInterceptor } from './core/interceptors/xsrf.interceptor';
+import { WithCredentialsInterceptorService } from './core/interceptors/with-credentials-interceptor.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -40,6 +50,10 @@ import { RegisterModule } from './modules/register/register.module';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    HttpClientXsrfModule.withOptions({
+      cookieName: 'XSRF-TOKEN',
+      headerName: 'X-XSRF-TOKEN',
+    }),
 
     // 3rd party
     BreadcrumbModule,
@@ -62,10 +76,23 @@ import { RegisterModule } from './modules/register/register.module';
     RegisterModule,
 
     // app
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: WithCredentialsInterceptorService,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpXSRFInterceptor,
+      multi: true,
+    },
+    //{ provide: HttpXsrfTokenExtractor, useClass: HttpXSRFInterceptor },
+    //{ provide: XSRF_COOKIE_NAME, useValue: 'XSRF-TOKEN' },
+    //{ provide: XSRF_HEADER_NAME, useValue: 'X-XSRF-TOKEN' },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     {
       provide: HTTP_INTERCEPTORS,

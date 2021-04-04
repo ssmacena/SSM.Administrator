@@ -27,9 +27,11 @@ namespace SSM.Administrator.WebApi.Controllers.Secure
             try
             {
                 var tokens = _antiForgery.GetAndStoreTokens(HttpContext);
-                Response.Cookies.Append("XSRF-REQUEST-TOKEN", tokens.RequestToken, new CookieOptions
+                Response.Cookies.Append("X-XSRF-TOKEN", tokens.RequestToken, new CookieOptions
                 {
-                    HttpOnly = false
+                    Secure = true,
+                    HttpOnly = false,
+                    SameSite = SameSiteMode.None
                 });
                 return NoContent();
             }

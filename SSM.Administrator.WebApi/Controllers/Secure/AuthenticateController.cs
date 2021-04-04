@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Antiforgery;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -21,53 +23,31 @@ namespace SSM.Administrator.WebApi.Controllers.Secure
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IConfiguration _configuration;
+        private readonly IAntiforgery _antiForgery;
+        private readonly IUserClaimsPrincipalFactory<ApplicationUser> _principalFactory;
 
         public AuthenticateController(SignInManager<ApplicationUser> signInManager,
                                       UserManager<ApplicationUser> userManager,
+                                      IUserClaimsPrincipalFactory<ApplicationUser> principalFactory,
+                                      IAntiforgery antiForgery,
                                       IConfiguration configuration)
         {
             _signInManager = signInManager;
             _userManager = userManager;
             _configuration = configuration;
+            _antiForgery = antiForgery;
+            _principalFactory = principalFactory;
         }
 
-        //private readonly IDbContextFactory<ApplicationDbContext> _contextFactory;
-
-        //public AuthenticateController(IDbContextFactory<ApplicationDbContext> contextFactory)
-        //{
-        //    _contextFactory = contextFactory;           
-        //}
-        [HttpGet]
-        public IActionResult GetUsers()
-        {
-            IActionResult response = BadRequest();
-
-            try
-            {
-                var result = _userManager.Users.ToList();
-                
-                response = Ok(result);
-            }
-            catch (Exception ex)
-            {
-                response = BadRequest(ex.Message);
-            }
-
-            return response;
-        }
-
-        [HttpPost]
         [Route("login")]
-        public async Task<IActionResult> Login([FromBody] LoginModel model)
+        [HttpPost]
+        [IgnoreAntiforgeryToken]
+        [AllowAnonymous]
+        public async Task<IActionResult> Login([FromBody] LoginModel loginRequest)
         {
-            //return this.Execute<UserProfile<Permission>>(delegate
-            //{
-            //    var businessController = CreateBusiness<AuthenticationManager>();
-            //    UserProfile<Permission> result = businessController.RetrieveProfileByCredentials(model.Username, model.Password);
-            //    //businessController.Dispose();
-            //    return result;
-            //});
-            var user = await _userManager.FindByEmailAsync(model.Username);
+            var user = await _userManager.FindByEmailAsync(loginRequest.Username);
+            if (user == null)
+                return Unauthorized();
 
             //await _userManager.AddToRoleAsync(user, "Admin");
 
@@ -76,66 +56,32 @@ namespace SSM.Administrator.WebApi.Controllers.Secure
             //await _userManager.AddToRoleAsync(user, "User");
 
 
-            if (user != null)
-            {                
-                var passwordIsCorrect = await _userManager.CheckPasswordAsync(user, model.Password);
-                if (passwordIsCorrect)
-                {
-                    var userRoles = await _userManager.GetRolesAsync(user);
+            var signInResult = await _signInManager.PasswordSignInAsync(user, loginRequest.Password, isPersistent: true, lockoutOnFailure: false);
+            if (!signInResult.Succeeded)
+                return Unauthorized();
 
-                    return Ok(new
-                    {
-                        //token = new JwtSecurityTokenHandler().WriteToken(token),
-                        token = TokenService.createToken(user.UserName, userRoles, _configuration),
-                        expiresIn = DateTime.UtcNow.AddDays(1)
-                    });
-                }
-                    //var authClaims = new List<Claim>
-                    //{
-                    //    new Claim(ClaimTypes.Name, user.UserName),
-                    //    new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                    //};
+            var userRoles = await _userManager.GetRolesAsync(user);
 
-                    //foreach (var userRole in userRoles)
-                    //{
-                    //    authClaims.Add(new Claim(ClaimTypes.Role, userRole));
-                    //}
+            var tokens = _antiForgery.GetAndStoreTokens(HttpContext);
+            HttpContext.Response.Cookies.Append("XSRF-TOKEN", tokens.RequestToken, new CookieOptions() { HttpOnly = false });
 
-                    //var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JWT:Secret"]));
+            var principal = await _principalFactory.CreateAsync(user);
+            this.HttpContext.User = principal;
 
-                    //var token = new JwtSecurityToken(
-                    //    issuer: _configuration["JWT:ValidIssuer"],
-                    //    audience: _configuration["JWT:ValidAudience"],
-                    //    expires: DateTime.Now.AddHours(3),
-                    //    claims: authClaims,
-                    //    signingCredentials: new SigningCredentials(authSigningKey, SecurityAlgorithms.HmacSha256)
-                    //    );
-
-
-            }
-            return Unauthorized();
+            return Ok(new
+            {
+                //token = new JwtSecurityTokenHandler().WriteToken(token),
+                token = TokenService.createToken(user.UserName, userRoles, _configuration),
+                expiresIn = DateTime.UtcNow.AddDays(1)
+            });
         }
 
-
-        [HttpPost]
-        [Route("register")]
-        public async Task<IActionResult> Register([FromBody] RegisterModel model)
+        [HttpGet]
+        [Route("check-session")]
+        public async Task<IActionResult> CheckValidSession()
         {
-            var userExists = await _userManager.FindByNameAsync(model.Username);
-            if (userExists != null)
-                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User already exists!" });
-
-            ApplicationUser user = new ApplicationUser()
-            {
-                Email = model.Email,
-                SecurityStamp = Guid.NewGuid().ToString(),
-                UserName = model.Username
-            };
-            var result = await _userManager.CreateAsync(user, model.Password);
-            if (!result.Succeeded)
-                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User creation failed! Please check user details and try again." });
-
-            return Ok(new Response { Status = "Success", Message = "User created successfully!" });
+            IActionResult response = Ok();
+            return response;
         }
 
     }
